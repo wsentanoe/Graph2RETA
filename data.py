@@ -14,17 +14,11 @@ def cut(path, num_samples):
             continue
         datas[i] = datas[i][:num_samples]
     datas = tuple(datas)
-    # file = open(path, 'wb')
-    # pickle.dump(datas, file)
-    # file.close()
     with open(path, 'wb') as f:
         pickle.dump(datas, f)
-    # np.save(path, datas, allow_pickle=True)
 
 cut(train_path, 100)
 cut(test_path, 50)
-
-# d = np.load(train_path, allow_pickle=True)
 with open(train_path, 'rb') as f:
     dd = pickle.load(f)
 pass

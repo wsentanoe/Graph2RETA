@@ -121,7 +121,6 @@ class LSTMEncoder(nn.Module):
         # Return output and final hidden state
         if self.bidirectional:
             # Optionally, Sum bidirectional RNN outputs
-            # outputs = outputs[:, :, :self.hidden_size] + outputs[:, :, self.hidden_size:]
             outputs = torch.cat((outputs[:, :, :self.hidden_size], outputs[:, :, self.hidden_size:]), dim=2)
         batch_size = embedded_inputs.size(0)
         h_n, c_n = hidden
@@ -158,9 +157,6 @@ class Decoder(nn.Module):
         self.tanh_exploration = tanh_exploration
         self.decode_type = 'greedy'  # Needs to be set explicitly before use
 
-        # For geo prediciton
-        # self.geo_vocab_size = geo_vocab_size
-        # self.geo_pred = nn.Linear(hidden_dim, geo_vocab_size)
 
         self.lstm = nn.LSTMCell(embedding_dim, hidden_dim)
         self.pointer = Attention(hidden_dim, use_tanh=use_tanh, C=tanh_exploration)
@@ -178,7 +174,6 @@ class Decoder(nn.Module):
 
         result_mask = mask.clone().scatter_(1, selected.unsqueeze(-1), True)
         return mask_modify(result_mask)
-        # return mask.clone().scatter_(1, selected.unsqueeze(-1), True)
 
     def recurrence(self, x, h_in, prev_mask, prev_idxs, step, context):
 
@@ -208,7 +203,6 @@ class Decoder(nn.Module):
 
         if mask_logits is None:
             mask_logits = self.mask_logits
-        #print('x shape:', x.shape, 'h_in shape',h_in[0].shape)
         hy, cy = self.lstm(x, h_in)
         g_l, h_out = hy, (hy, cy)
 
@@ -217,8 +211,6 @@ class Decoder(nn.Module):
             # For the glimpses, only mask before softmax so we have always an L1 norm 1 readout vector
             if mask_glimpses:
                 logits[logit_mask] = -np.inf
-            # [batch_size x h_dim x sourceL] * [batch_size x sourceL x 1] =
-            # [batch_size x h_dim x 1]
             g_l = torch.bmm(ref, self.sm(logits).unsqueeze(2)).squeeze(2)
         _, logits = self.pointer(g_l, context)
 
@@ -244,10 +236,6 @@ class Decoder(nn.Module):
         selections = []
         steps = range(embedded_inputs.size(0))
         idxs = None
-        # mask = Variable(
-        #     embedded_inputs.data.new().byte().new(embedded_inputs.size(1), embedded_inputs.size(0)).zero_(),
-        #     requires_grad=False
-        # )
         mask = Variable(init_mask, requires_grad=False)
 
         for i in steps:
@@ -400,18 +388,6 @@ class PointNet(nn.Module):
         enc_h = sort_encoder_outputs.permute(1, 0, 2).contiguous()  #(seq_len, batch_size, hidden)
         return decoder_input, inputs, dec_init_state, enc_h
 
-    # def get_pos(self, index):
-    #     batch_size = index.shape[0]
-    #     max_len = index.shape[1]
-    #     pos = torch.zeros((batch_size, max_len), dtype=torch.int64).to(index.device)
-    #     for i in range(batch_size):
-    #         for j in range(max_len):
-    #             if index[i][j] == -1:
-    #                 break
-    #             pos[i][index[i][j]] = j
-    #
-    #     return pos
-
     def get_pos(self, idx):
         mask = idx < 0
         max_len = idx.shape[1]
@@ -489,7 +465,6 @@ class PointNet(nn.Module):
 
         sort_x_emb = self.sort_x_embedding(sort_x)  # embedding sort_x, (batch_size, max_seq_len, todo_emb_dim)
         decoder_input, inputs, dec_init_state, enc_h = self.enc_sort_emb(sort_x_emb, sort_len, batch_size, max_seq_len)
-        # [print(_.shape) for _ in [decoder_input, inputs, enc_h]]
         (pointer_log_scores, pointer_argmaxs) = self.decoder(decoder_input, inputs, dec_init_state, enc_h,init_mask)
         mask_tensor = self.get_seq_mask(max_seq_len, batch_size, sort_len)
         pointer_log_scores = pointer_log_scores.exp()
@@ -502,5 +477,4 @@ class PointNet(nn.Module):
 
         return pointer_log_scores, pointer_argmaxs, pos, mask_tensor
 
-#-------------------------------------------------------------------------------------------------------------------------#
 

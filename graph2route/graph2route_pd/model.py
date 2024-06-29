@@ -210,8 +210,11 @@ class Graph2Route(nn.Module):
             for layer in range(self.gcn_num_layers):
                 b_node_h, b_edge_h = self.gcn_layers[layer](b_node_h.reshape(B * T, N, d_h),
                                                             b_edge_h.reshape(B * T, N, N, d_h))
-
-        # GAT START
+        """
+         _KI_
+       
+          GAT START
+        """
         if self.config['spatial_encoder'] == 'gatv2':
             batch_node_h_gat = torch.zeros([B * T, N, d_h]).to(self.device)
             E_mask_gat = torch.FloatTensor(E_mask).reshape(B * T, N, N).to(self.device)
@@ -220,9 +223,12 @@ class Graph2Route(nn.Module):
                 batch_node_h_gat = self.gat_layer_v2[layer](b_node_h.reshape(B * T, N, d_h), E_mask_gat)
 
             b_node_h = batch_node_h_gat.reshape(B, T, N, d_h)
-        # GAT END
-
+        
+        """
+        _KI_     
         # GAT PyG START
+        """
+        # 
         if self.config['spatial_encoder'] == 'gat':
             batch_node_h_gat = torch.zeros([B * T, N, d_h]).to(self.device)
             E_mask_gat = torch.FloatTensor(E_mask).reshape(B * T, N, N).to(self.device)
@@ -236,7 +242,6 @@ class Graph2Route(nn.Module):
                                                                              edge_index[0], edge_index[1], :])
 
             b_node_h = batch_node_h_gat.reshape(B, T, N, d_h)
-        # GAT PyG END
 
         # EGAT START
         """batch_node_h_egat = torch.zeros([B * T, N, d_h]).to(self.device)
@@ -331,15 +336,13 @@ class Graph2RouteDataset(Dataset):
         pad_value = 26
         self.unpick_x, self.unpick_len, self.last_x, self.last_len, self.eta_np, self.order_np, self.index_np = preprocess_food(
             V, V_ft, V_dt, V_dispatch_mask, cou, V_val, pad_value)
-        # ------------------------------------------------------------------------------------------
-        # size dict
+
         self.size_dict = {
             'last_x_size': 13,#len(self.last_x[0][0]),
             'unpick_x_size': 12#len(self.unpick_x[0][0])
         }
 
     def get_size(self):
-        # input_size = len(self.last_x[0][0]) * 5  + len(self.global_x[0]) + len(self.unpick_x[0][0]) * max_len + 1 + max_len
         input_size = len(self.unpick_x[0][0]) + 25 + 1
         sort_x_size = len(self.unpick_x[0][0])
         return input_size, sort_x_size

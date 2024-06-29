@@ -97,6 +97,7 @@ def location_deviation(pred, label, label_len, mode='square'):
     idx_1 = [idx for idx, x in enumerate(label)]
     # get the location in list 2
     for i in range(len(label)):
+        # _KI_ Need to check this if 
         if label[i] not in pred:
             print(pred)
             print(label)
@@ -246,7 +247,6 @@ if __name__ == '__main__':
     print('prediction:', prediction)
     print('label:', label)
     print('label not affected by new orders:', label[:label_len])
-
     print('HR@3:' , hit_rate(prediction, label, label_len, 3))
     print('KRC:'  , kendall_rank_correlation(prediction, label, label_len))
     print('LSD:'  , location_deviation(prediction, label, label_len, 'square'))

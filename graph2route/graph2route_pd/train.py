@@ -136,8 +136,12 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
             cou = torch.LongTensor(cou).to(device)
             E = torch.FloatTensor(E).to(device)
             index = torch.IntTensor(index).to(device)
+            """
+            _KI_
+            change the data type of ETPA parameters tuples->arrays
 
-            #  change the data type of ETPA parameters tuples->arrays
+            """
+     
             last_x = np.array(last_x)
             last_len = np.array(last_len)
             unpick_x = np.array(unpick_x)
@@ -145,8 +149,11 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
             label_eta = np.array(eta_np)
             label_order = np.array(order_np)
             label_idx = np.array(index_np)
-            #  change the data type of ETPA parameters arrays->Tensors
 
+            """
+            _KI_
+            #  change the data type of ETPA parameters arrays->Tensors
+            """
             last_x = torch.FloatTensor(last_x).to(device)
             last_len = torch.FloatTensor(last_len).to(device)
             unpick_x = torch.FloatTensor(unpick_x).to(device)
@@ -154,8 +161,10 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
             label_eta = torch.FloatTensor(label_eta).to(device)
             label_order = torch.LongTensor(label_order).to(device)
             label_idx = torch.LongTensor(label_idx).to(device)
-
+            """
+            _KI_
             # Reshape input to B*T ...
+            """
             _B, _T, _N = label_eta.shape
             last_x = last_x.reshape((_B * _T, _N, -1))
             last_len = last_len.reshape((_B * _T))
@@ -171,26 +180,26 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
 
             unrolled = pred_scores.view(-1, pred_scores.size(-1))
             loss_g2r = F.cross_entropy(unrolled, label.view(-1), ignore_index=params['pad_value'])
-
+            """
+            _KI_
             #  ETPA integration
             #  Code for pnn,
             # --------------------Before Masking ( Assign ranking to train and test )---------------------------------
             #  As the tensors inside dictionary were float -> first changed it to int values
-
-            pred = pred_pointers.to(torch.int32)  # Convert to int32
-
-            # train_sort_idx = tuple(pred)
-            # --------------------------- Masking ---------------------------------
-            mask_value = torch.tensor(-1, dtype=torch.int32).to(device)
-            mask = torch.eq(pred, 26)  # Create a boolean mask where values are 26
-            masked_tensor = torch.where(mask, mask_value, pred)
             # --------------------After Masking ( Assign masked ranking to train and test )---------------------------------
+             # Define the file name of the output file (.pkl)
+            """
+            pred = pred_pointers.to(torch.int32)  
+
+            mask_value = torch.tensor(-1, dtype=torch.int32).to(device)
+            mask = torch.eq(pred, 26) 
+            masked_tensor = torch.where(mask, mask_value, pred)
             sort_idx = pred
             sort_pos = masked_tensor
 
             (input_idx, input_order) = (label_idx, label_order) if params['train_mode'] == 'true' else (
             sort_idx, sort_pos)
-            # pred_eta, loss, n  = model(last_x, last_len, global_x, unpick_x, unpick_len, label_idx, label_order, label_eta, input_idx, input_order)
+
             pred_etpa, loss_etpa, n = modelArrivalTime(last_x, last_len, unpick_x, unpick_len, label_idx, label_order,
                                                        label_eta, input_idx, input_order)
 
@@ -221,30 +230,23 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
         params_1['eval_max'] = params['eval_end_1']
         save2fileRoute(params_1)
 
-        print(evaluator_2.to_str())
         params_2 = dict_merge([evaluator_2.to_dict(), params])
         params_2['eval_min'] = params['eval_start']
         params_2['eval_max'] = params['eval_end_2']
         save2fileRoute(params_2)
 
-        # Define the file name of the output file (.pkl)
+       
         output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
-
-        # Initialize the dictionary for the output
         output_dict = {}
 
-        # Check if file exists
         if Path(output_fname).is_file():
             output_dict = np.load(output_fname, allow_pickle=True)
 
-        # Save route prediction to file (testing data)
         output_dict['pred_pointers_test'] = total_pred_pointers
 
-        # Store the data to the file
         with open(output_fname, 'wb') as df_file:
             pickle.dump(obj=output_dict, file=df_file)
 
-        # Store node feature data into a file
         output_dict_node = {}
         output_dict_node['V_val'] = total_node_features
         output_fname_node = 'node_features_test.npy'
@@ -271,8 +273,6 @@ if __name__ == "__main__":
     import logging
 
     logger = logging.getLogger('training')
-    print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-    print('GPU:', torch.cuda.current_device())
     try:
         tuner_params = nni.get_next_parameter()
         logger.debug(tuner_params)

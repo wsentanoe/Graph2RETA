@@ -116,14 +116,12 @@ def main(param):
     torch.cuda.set_device(0)
     device = torch.device('cuda' if torch.cuda.is_available() else "cpu")
 
-    print('device:' + str(device))
     if str(device) == 'cuda':
         print('current cuda id:',str(torch.cuda.current_device()))
 
     train_path, test_path = get_dataset_path(param)
     data_file = os.path.dirname(train_path)
     fout = data_file + f'/PnnOutput_{param["datatype"]}.pkl'
-    print('data: ' + train_path)
 
     last_x, last_len, global_x, unpick_x, unpick_len, unpick_geo, days_np, order_np, index_np, eta_np, dic_geo2index = np.load(train_path, allow_pickle=True)
     train_set = MyDataset(last_x, last_len, global_x, unpick_x, unpick_len, index_np, order_np, eta_np, sample_num=-1)
@@ -133,7 +131,7 @@ def main(param):
     test_set = MyDataset(last_x, last_len, global_x, unpick_x, unpick_len, index_np, order_np, eta_np, sample_num=-1)
     test_loader = DataLoader(dataset=test_set, batch_size=512, shuffle=False)
 
-    print(f"#train:{len(train_set)} | #test:{len(test_set)}")
+    print(f"#length train_set:{len(train_set)} | #length test_set:{len(test_set)}")
     input_size, sort_x_size = train_set.get_size()
     print(f"input_size:{input_size}, sort_x_size:{sort_x_size}")
 
