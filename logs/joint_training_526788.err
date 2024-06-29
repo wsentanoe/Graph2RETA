@@ -1,22 +1,0 @@
-  0%|          | 0/2 [00:00<?, ?it/s, current_loss=0, epoch=0, loss=0]  0%|          | 0/2 [00:00<?, ?it/s, current_loss=3.03, epoch=0, loss=3.03]  0%|          | 0/2 [00:00<?, ?it/s, current_loss=3.03, epoch=0, loss=3.03]
-Traceback (most recent call last):
-  File "run_joint.py", line 55, in <module>
-    graph2route_pd.main(params)
-  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
-    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1202, in run
-    result_dict = train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device, PROCESS_BATCH, TEST_MODEL, params, save2FileRoute,save2FileArrivalTime,modelArrivalTime)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 982, in train_val_test_g2r
-    pred_eta, loss_etpa, n  = modelArrivalTime(last_x, last_len, unpick_x, unpick_len,label_idx, label_order, label_eta, input_idx, input_order)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/sentanoe/joint_training/algorithm1/RankPETA.py", line 192, in forward
-    latest_route_emb = rnn_forwarder(self.Latest_LSTM, last_x, last_len,batch_size)  # 取最后的输出 Get The Final Output
-  File "/home/sentanoe/joint_training/algorithm1/RankPETA.py", line 55, in rnn_forwarder
-    outputs, hidden = rnn(embedded_inputs)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/rnn.py", line 692, in forward
-    self.dropout, self.training, self.bidirectional, self.batch_first)
-RuntimeError: Input and parameter tensors are not at the same device, found input tensor at cpu and parameter tensor at cuda:0
-srun: error: stud-000: task 0: Exited with exit code 1
