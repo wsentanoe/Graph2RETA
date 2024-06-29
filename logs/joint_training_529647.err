@@ -1,0 +1,20 @@
+/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/rnn.py:65: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.05 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+  0%|          | 0/39 [00:00<?, ?it/s, current_loss=0, epoch=0, loss=0]/home/sentanoe/joint_training/algorithm/graph2route_pd/tft.py:180: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  sparse_weights = self.softmax(sparse_weights).unsqueeze(2)
+  0%|          | 0/39 [00:00<?, ?it/s, current_loss=2.91, epoch=0, loss=2.91]  0%|          | 0/39 [00:00<?, ?it/s, current_loss=2.91, epoch=0, loss=2.91]
+Traceback (most recent call last):
+  File "run_joint.py", line 55, in <module>
+    graph2route_pd.main(params)
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
+    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
+  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1206, in run
+    result_dict = train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device, PROCESS_BATCH, TEST_MODEL, params, save2FileRoute,save2FileArrivalTime,modelArrivalTime)
+  File "/home/sentanoe/joint_training/my_utils/utils.py", line 984, in train_val_test_g2r
+    pred_eta, loss_etpa, n  = modelArrivalTime(last_x, last_len, unpick_x, unpick_len,label_idx, label_order, label_eta, input_idx, input_order)
+  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/sentanoe/joint_training/algorithm1/RankPETA.py", line 205, in forward
+    x = torch.cat([unpick_x.to(device), order_info], dim=2)
+RuntimeError: Sizes of tensors must match except in dimension 2. Expected size 64 but got size 768 for tensor number 1 in the list.
+srun: error: stud-000: task 0: Exited with exit code 1

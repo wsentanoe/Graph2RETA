@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "run_joint.py", line 53, in <module>
+    import algorithm.graph2route_pd.train as graph2route_pd
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 11, in <module>
+    from algorithm.graph2route_pd.model import Graph2RouteDataset
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/model.py", line 6, in <module>
+    from algorithm.graph2route_pd.tft import TFT
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/tft.py", line 6, in <module>
+    from algorithm.graph2route_pd.tft import TFT
+ImportError: cannot import name 'TFT'
+srun: error: stud-000: task 0: Exited with exit code 1

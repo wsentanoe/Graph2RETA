@@ -1,0 +1,176 @@
+Device:  cuda
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 20,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 32,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test_full.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train_full.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val_full.npy',
+ 'num_block': 2,
+ 'num_epoch': 1,
+ 'num_head': 2,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 2022,
+ 'sort_mode': 'pnn_idx',
+ 'spatial_encoder': 'gcn',
+ 'temporal_encoder': 'tft',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test_full.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train_full.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val_full.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:53
+#train:2521 | #val:1257 | #test:1261
+*** Epoch: 0 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.758 | lsd:0.707 | ed:1.043 | hr@1:0.634 | hr@2:0.856 | hr@3:0.902 | acc@1:0.634 | acc@2:0.568 | acc@3:0.524 | Best krc: -1 | Best epoch: -1
+best model saved
+[2023-12-01 18:42:46] INFO (nni/MainThread) Intermediate result: 0.7576303645827038  (Index 0)
+-----------------ETPA RESULT-------------------
+Epoch 0: Validation	rmse: 26.27	mae: 20.75	mape: 67.12%	acc@10: 29.63%	acc@20: 57.41%	acc@30: 76.3%	
+[2023-12-01 18:42:46] INFO (nni/MainThread) Intermediate result: 26.27343053077517  (Index 1)
+loaded model path: /home/sentanoe/joint_training/data/dataset/food_pd/sort_model/hidden_size-8.gcnru-pd_1701452457.82067541701452457.820694
+best model loaded !!!
+krc:0.742 | lsd:0.546 | ed:1.087 | hr@1:0.631 | hr@2:0.898 | hr@3:0.923 | acc@1:0.631 | acc@2:0.58 | acc@3:0.516 |
+
+-------------------------------------------------------------
+Best epoch for G2R:  0
+Best epoch for ETPA:  0
+graph2route_pd Evaluation in test: krc:0.742 | lsd:0.546 | ed:1.087 | hr@1:0.631 | hr@2:0.898 | hr@3:0.923 | acc@1:0.631 | acc@2:0.58 | acc@3:0.516 |
+RankPETA Evaluation in test: rmse: 21.66	mae: 17.63	mape: 69.65%	acc@10: 27.85%	acc@20: 63.29%	acc@30: 86.5%	
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 20,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 32,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test_full.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train_full.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val_full.npy',
+ 'num_block': 2,
+ 'num_epoch': 1,
+ 'num_head': 4,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 2022,
+ 'sort_mode': 'pnn_idx',
+ 'spatial_encoder': 'gcn',
+ 'temporal_encoder': 'tft',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test_full.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train_full.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val_full.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:53
+#train:2521 | #val:1257 | #test:1261
+*** Epoch: 0 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.755 | lsd:0.715 | ed:1.035 | hr@1:0.623 | hr@2:0.857 | hr@3:0.903 | acc@1:0.623 | acc@2:0.561 | acc@3:0.523 | Best krc: -1 | Best epoch: -1
+best model saved
+[2023-12-01 18:45:03] INFO (nni/MainThread) Intermediate result: 0.7554377961024225  (Index 2)
+-----------------ETPA RESULT-------------------
+Epoch 0: Validation	rmse: 26.33	mae: 20.78	mape: 66.98%	acc@10: 29.26%	acc@20: 57.04%	acc@30: 76.3%	
+[2023-12-01 18:45:03] INFO (nni/MainThread) Intermediate result: 26.33207847727926  (Index 3)
+loaded model path: /home/sentanoe/joint_training/data/dataset/food_pd/sort_model/hidden_size-8.gcnru-pd_1701452586.43895361701452586.438969
+best model loaded !!!
+krc:0.749 | lsd:0.539 | ed:1.069 | hr@1:0.629 | hr@2:0.899 | hr@3:0.927 | acc@1:0.629 | acc@2:0.584 | acc@3:0.529 |
+
+-------------------------------------------------------------
+Best epoch for G2R:  0
+Best epoch for ETPA:  0
+graph2route_pd Evaluation in test: krc:0.749 | lsd:0.539 | ed:1.069 | hr@1:0.629 | hr@2:0.899 | hr@3:0.927 | acc@1:0.629 | acc@2:0.584 | acc@3:0.529 |
+RankPETA Evaluation in test: rmse: 21.67	mae: 17.65	mape: 69.99%	acc@10: 27.85%	acc@20: 63.71%	acc@30: 86.08%	
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 20,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 64,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test_full.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train_full.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val_full.npy',
+ 'num_block': 2,
+ 'num_epoch': 1,
+ 'num_head': 2,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 2022,
+ 'sort_mode': 'pnn_idx',
+ 'spatial_encoder': 'gcn',
+ 'temporal_encoder': 'tft',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test_full.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train_full.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val_full.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:53
+#train:2521 | #val:1257 | #test:1261
+*** Epoch: 0 ***

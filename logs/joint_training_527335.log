@@ -1,0 +1,69 @@
+Device:  cuda
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 10,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 32,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val.npy',
+ 'num_block': 4,
+ 'num_epoch': 2,
+ 'num_head': 4,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 2022,
+ 'sort_mode': 'true_idx',
+ 'spatial_encoder': 'gcn',
+ 'temporal_encoder': 'gru',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:38
+#train:128 | #val:128 | #test:128
+****ETPA Loss****
+Epoch 0: Train [0/128 (0%)]	RMSE: 52.065787
+****ETPA Loss****
+Epoch 0: Train [64/128 (50%)]	RMSE: 58.238217
+best model saved
+[2023-11-23 01:52:23] INFO (nni/MainThread) Intermediate result: 0.6211489040060468  (Index 0)
+[2023-11-23 01:52:23] INFO (nni/MainThread) Intermediate result: 22.22006783956615  (Index 1)
+****ETPA Loss****
+Epoch 1: Train [0/128 (0%)]	RMSE: 59.193449
+****ETPA Loss****
+Epoch 1: Train [64/128 (50%)]	RMSE: 58.170492
+[2023-11-23 01:52:25] INFO (nni/MainThread) Intermediate result: 0.6050200593057735  (Index 2)
+[2023-11-23 01:52:25] INFO (nni/MainThread) Intermediate result: 22.10580364746912  (Index 3)
+loaded model path: /home/sentanoe/joint_training/data/dataset/food_pd/sort_model/hidden_size-8.gcnru-pd_1700700742.24004721700700742.2400641
+best model loaded !!!
+krc:0.564 | lsd:1.351 | ed:1.416 | hr@1:0.534 | hr@2:0.742 | hr@3:0.858 | acc@1:0.534 | acc@2:0.421 | acc@3:0.394 |
+
+-------------------------------------------------------------
+Best epoch for G2R:  0
+Best epoch for ETPA:  1
+graph2route_pd Evaluation in test: krc:0.564 | lsd:1.351 | ed:1.416 | hr@1:0.534 | hr@2:0.742 | hr@3:0.858 | acc@1:0.534 | acc@2:0.421 | acc@3:0.394 |
+RankPETA Evaluation in test: rmse: 21.69	mae: 18.32	mape: 97.53%	acc@10: 27.78%	acc@20: 66.67%	acc@30: 83.33%	

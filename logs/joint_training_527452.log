@@ -1,0 +1,1523 @@
+Device:  cuda
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 10,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 32,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test_full.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train_full.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val_full.npy',
+ 'num_block': 4,
+ 'num_epoch': 1000,
+ 'num_head': 4,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 2022,
+ 'sort_mode': 'true_idx',
+ 'spatial_encoder': 'gatv2',
+ 'temporal_encoder': 'gru',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test_full.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train_full.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val_full.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:38
+#train:2521 | #val:1257 | #test:1261
+****ETPA Loss****
+Epoch 0: Train [0/2521 (0%)]	RMSE: 56.674559
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [192/2521 (8%)]	RMSE: 58.617830
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [384/2521 (15%)]	RMSE: 51.038541
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [576/2521 (23%)]	RMSE: 52.885107
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [768/2521 (31%)]	RMSE: 49.949813
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [960/2521 (38%)]	RMSE: 51.797681
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [1152/2521 (46%)]	RMSE: 50.153487
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [1344/2521 (54%)]	RMSE: 51.026957
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [1536/2521 (62%)]	RMSE: 53.275678
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [1728/2521 (69%)]	RMSE: 52.567607
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [1920/2521 (77%)]	RMSE: 51.522130
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [2112/2521 (85%)]	RMSE: 51.106359
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 0: Train [2304/2521 (92%)]	RMSE: 50.714268
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:11:12] INFO (nni/MainThread) Intermediate result: 0.7634133393206415  (Index 0)
+[2023-11-23 22:11:12] INFO (nni/MainThread) Intermediate result: 43.05929947739948  (Index 1)
+****ETPA Loss****
+Epoch 1: Train [0/2521 (0%)]	RMSE: 50.198216
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [192/2521 (8%)]	RMSE: 49.057663
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [384/2521 (15%)]	RMSE: 48.900967
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [576/2521 (23%)]	RMSE: 48.248884
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [768/2521 (31%)]	RMSE: 48.740928
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [960/2521 (38%)]	RMSE: 48.008810
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [1152/2521 (46%)]	RMSE: 47.794372
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [1344/2521 (54%)]	RMSE: 47.985190
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [1536/2521 (62%)]	RMSE: 47.994391
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [1728/2521 (69%)]	RMSE: 47.790822
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [1920/2521 (77%)]	RMSE: 47.531326
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [2112/2521 (85%)]	RMSE: 47.217356
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 1: Train [2304/2521 (92%)]	RMSE: 46.669017
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:11:54] INFO (nni/MainThread) Intermediate result: 0.7647276252873105  (Index 2)
+[2023-11-23 22:11:54] INFO (nni/MainThread) Intermediate result: 38.32886650859801  (Index 3)
+****ETPA Loss****
+Epoch 2: Train [0/2521 (0%)]	RMSE: 46.225364
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [192/2521 (8%)]	RMSE: 46.013088
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [384/2521 (15%)]	RMSE: 45.665402
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [576/2521 (23%)]	RMSE: 45.424305
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [768/2521 (31%)]	RMSE: 45.116533
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [960/2521 (38%)]	RMSE: 44.921882
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [1152/2521 (46%)]	RMSE: 44.686091
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [1344/2521 (54%)]	RMSE: 44.442622
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [1536/2521 (62%)]	RMSE: 44.073019
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [1728/2521 (69%)]	RMSE: 43.850520
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [1920/2521 (77%)]	RMSE: 43.753954
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [2112/2521 (85%)]	RMSE: 43.412581
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 2: Train [2304/2521 (92%)]	RMSE: 43.307937
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:12:40] INFO (nni/MainThread) Intermediate result: 0.770070344884512  (Index 4)
+[2023-11-23 22:12:40] INFO (nni/MainThread) Intermediate result: 34.688855054290684  (Index 5)
+****ETPA Loss****
+Epoch 3: Train [0/2521 (0%)]	RMSE: 42.968818
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [192/2521 (8%)]	RMSE: 42.655489
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [384/2521 (15%)]	RMSE: 42.424623
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [576/2521 (23%)]	RMSE: 42.253081
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [768/2521 (31%)]	RMSE: 42.044415
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [960/2521 (38%)]	RMSE: 41.904512
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [1152/2521 (46%)]	RMSE: 41.649502
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [1344/2521 (54%)]	RMSE: 41.393114
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [1536/2521 (62%)]	RMSE: 41.141249
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [1728/2521 (69%)]	RMSE: 40.830931
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [1920/2521 (77%)]	RMSE: 40.578289
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [2112/2521 (85%)]	RMSE: 40.455789
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 3: Train [2304/2521 (92%)]	RMSE: 40.244451
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:13:17] INFO (nni/MainThread) Intermediate result: 0.7780583170089074  (Index 6)
+[2023-11-23 22:13:17] INFO (nni/MainThread) Intermediate result: 31.74887517019497  (Index 7)
+****ETPA Loss****
+Epoch 4: Train [0/2521 (0%)]	RMSE: 40.010722
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [192/2521 (8%)]	RMSE: 39.832134
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [384/2521 (15%)]	RMSE: 39.676015
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [576/2521 (23%)]	RMSE: 39.411621
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [768/2521 (31%)]	RMSE: 39.210916
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [960/2521 (38%)]	RMSE: 39.017748
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [1152/2521 (46%)]	RMSE: 38.817178
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [1344/2521 (54%)]	RMSE: 38.735780
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [1536/2521 (62%)]	RMSE: 38.594295
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [1728/2521 (69%)]	RMSE: 38.428453
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [1920/2521 (77%)]	RMSE: 38.265950
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [2112/2521 (85%)]	RMSE: 38.106009
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 4: Train [2304/2521 (92%)]	RMSE: 37.941932
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:13:50] INFO (nni/MainThread) Intermediate result: 0.7782136097396264  (Index 8)
+[2023-11-23 22:13:50] INFO (nni/MainThread) Intermediate result: 29.703864484381093  (Index 9)
+****ETPA Loss****
+Epoch 5: Train [0/2521 (0%)]	RMSE: 37.757097
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [192/2521 (8%)]	RMSE: 37.642683
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [384/2521 (15%)]	RMSE: 37.517516
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [576/2521 (23%)]	RMSE: 37.379811
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [768/2521 (31%)]	RMSE: 37.175237
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [960/2521 (38%)]	RMSE: 37.042019
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [1152/2521 (46%)]	RMSE: 36.865524
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [1344/2521 (54%)]	RMSE: 36.659916
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [1536/2521 (62%)]	RMSE: 36.563149
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [1728/2521 (69%)]	RMSE: 36.392340
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [1920/2521 (77%)]	RMSE: 36.289812
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [2112/2521 (85%)]	RMSE: 36.171878
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 5: Train [2304/2521 (92%)]	RMSE: 36.012403
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:14:25] INFO (nni/MainThread) Intermediate result: 0.7786428813538566  (Index 10)
+[2023-11-23 22:14:25] INFO (nni/MainThread) Intermediate result: 28.534897457488032  (Index 11)
+****ETPA Loss****
+Epoch 6: Train [0/2521 (0%)]	RMSE: 35.825185
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [192/2521 (8%)]	RMSE: 35.685823
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [384/2521 (15%)]	RMSE: 35.532189
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [576/2521 (23%)]	RMSE: 35.400943
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [768/2521 (31%)]	RMSE: 35.229119
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [960/2521 (38%)]	RMSE: 35.102478
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [1152/2521 (46%)]	RMSE: 34.978384
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [1344/2521 (54%)]	RMSE: 34.865868
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [1536/2521 (62%)]	RMSE: 34.809837
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [1728/2521 (69%)]	RMSE: 34.666046
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [1920/2521 (77%)]	RMSE: 34.520592
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [2112/2521 (85%)]	RMSE: 34.449589
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 6: Train [2304/2521 (92%)]	RMSE: 34.380158
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:15:00] INFO (nni/MainThread) Intermediate result: 0.7788147990246808  (Index 12)
+[2023-11-23 22:15:00] INFO (nni/MainThread) Intermediate result: 27.181914622671144  (Index 13)
+****ETPA Loss****
+Epoch 7: Train [0/2521 (0%)]	RMSE: 34.277926
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [192/2521 (8%)]	RMSE: 34.201847
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [384/2521 (15%)]	RMSE: 34.058415
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [576/2521 (23%)]	RMSE: 33.937414
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [768/2521 (31%)]	RMSE: 33.852222
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [960/2521 (38%)]	RMSE: 33.767520
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [1152/2521 (46%)]	RMSE: 33.690236
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [1344/2521 (54%)]	RMSE: 33.554003
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [1536/2521 (62%)]	RMSE: 33.455065
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [1728/2521 (69%)]	RMSE: 33.364197
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [1920/2521 (77%)]	RMSE: 33.259677
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [2112/2521 (85%)]	RMSE: 33.175504
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 7: Train [2304/2521 (92%)]	RMSE: 33.042622
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:15:34] INFO (nni/MainThread) Intermediate result: 0.7744559267515104  (Index 14)
+[2023-11-23 22:15:35] INFO (nni/MainThread) Intermediate result: 26.129063120859207  (Index 15)
+****ETPA Loss****
+Epoch 8: Train [0/2521 (0%)]	RMSE: 32.935537
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [192/2521 (8%)]	RMSE: 32.843026
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [384/2521 (15%)]	RMSE: 32.757286
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [576/2521 (23%)]	RMSE: 32.667646
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [768/2521 (31%)]	RMSE: 32.605082
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [960/2521 (38%)]	RMSE: 32.556604
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [1152/2521 (46%)]	RMSE: 32.486143
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [1344/2521 (54%)]	RMSE: 32.366266
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [1536/2521 (62%)]	RMSE: 32.345424
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [1728/2521 (69%)]	RMSE: 32.244900
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [1920/2521 (77%)]	RMSE: 32.125916
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [2112/2521 (85%)]	RMSE: 32.034137
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 8: Train [2304/2521 (92%)]	RMSE: 31.913113
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:16:06] INFO (nni/MainThread) Intermediate result: 0.7783979152234509  (Index 16)
+[2023-11-23 22:16:06] INFO (nni/MainThread) Intermediate result: 25.529668947404055  (Index 17)
+****ETPA Loss****
+Epoch 9: Train [0/2521 (0%)]	RMSE: 31.849541
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [192/2521 (8%)]	RMSE: 31.765002
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [384/2521 (15%)]	RMSE: 31.712750
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [576/2521 (23%)]	RMSE: 31.623354
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [768/2521 (31%)]	RMSE: 31.547203
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [960/2521 (38%)]	RMSE: 31.462941
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [1152/2521 (46%)]	RMSE: 31.370534
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [1344/2521 (54%)]	RMSE: 31.313193
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [1536/2521 (62%)]	RMSE: 31.281076
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [1728/2521 (69%)]	RMSE: 31.195662
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [1920/2521 (77%)]	RMSE: 31.117920
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [2112/2521 (85%)]	RMSE: 31.039537
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 9: Train [2304/2521 (92%)]	RMSE: 30.970957
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:16:37] INFO (nni/MainThread) Intermediate result: 0.7835207028473314  (Index 18)
+[2023-11-23 22:16:37] INFO (nni/MainThread) Intermediate result: 25.02183930105215  (Index 19)
+****ETPA Loss****
+Epoch 10: Train [0/2521 (0%)]	RMSE: 30.917511
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [192/2521 (8%)]	RMSE: 30.855947
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [384/2521 (15%)]	RMSE: 30.775930
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [576/2521 (23%)]	RMSE: 30.704195
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [768/2521 (31%)]	RMSE: 30.613480
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [960/2521 (38%)]	RMSE: 30.557213
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [1152/2521 (46%)]	RMSE: 30.525724
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [1344/2521 (54%)]	RMSE: 30.461512
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [1536/2521 (62%)]	RMSE: 30.397976
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [1728/2521 (69%)]	RMSE: 30.329200
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [1920/2521 (77%)]	RMSE: 30.245793
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [2112/2521 (85%)]	RMSE: 30.183281
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 10: Train [2304/2521 (92%)]	RMSE: 30.174641
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:17:05] INFO (nni/MainThread) Intermediate result: 0.7593120364873754  (Index 20)
+[2023-11-23 22:17:05] INFO (nni/MainThread) Intermediate result: 24.28098095014665  (Index 21)
+****ETPA Loss****
+Epoch 11: Train [0/2521 (0%)]	RMSE: 30.093631
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [192/2521 (8%)]	RMSE: 30.066560
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [384/2521 (15%)]	RMSE: 29.996627
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [576/2521 (23%)]	RMSE: 29.934070
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [768/2521 (31%)]	RMSE: 29.931239
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [960/2521 (38%)]	RMSE: 29.867318
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [1152/2521 (46%)]	RMSE: 29.807996
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [1344/2521 (54%)]	RMSE: 29.747766
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [1536/2521 (62%)]	RMSE: 29.693184
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [1728/2521 (69%)]	RMSE: 29.636908
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [1920/2521 (77%)]	RMSE: 29.553818
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [2112/2521 (85%)]	RMSE: 29.472277
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 11: Train [2304/2521 (92%)]	RMSE: 29.424471
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:17:34] INFO (nni/MainThread) Intermediate result: 0.779174804045814  (Index 22)
+[2023-11-23 22:17:34] INFO (nni/MainThread) Intermediate result: 23.976767225253116  (Index 23)
+****ETPA Loss****
+Epoch 12: Train [0/2521 (0%)]	RMSE: 29.367528
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [192/2521 (8%)]	RMSE: 29.327716
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [384/2521 (15%)]	RMSE: 29.256120
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [576/2521 (23%)]	RMSE: 29.221554
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [768/2521 (31%)]	RMSE: 29.185221
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [960/2521 (38%)]	RMSE: 29.125415
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [1152/2521 (46%)]	RMSE: 29.082758
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [1344/2521 (54%)]	RMSE: 29.018686
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [1536/2521 (62%)]	RMSE: 28.994496
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [1728/2521 (69%)]	RMSE: 28.925751
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [1920/2521 (77%)]	RMSE: 28.880322
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [2112/2521 (85%)]	RMSE: 28.815897
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 12: Train [2304/2521 (92%)]	RMSE: 28.758790
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:18:04] INFO (nni/MainThread) Intermediate result: 0.7606216701887887  (Index 24)
+[2023-11-23 22:18:04] INFO (nni/MainThread) Intermediate result: 23.54362142813719  (Index 25)
+****ETPA Loss****
+Epoch 13: Train [0/2521 (0%)]	RMSE: 28.738100
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [192/2521 (8%)]	RMSE: 28.705069
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [384/2521 (15%)]	RMSE: 28.656806
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [576/2521 (23%)]	RMSE: 28.614085
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [768/2521 (31%)]	RMSE: 28.570475
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [960/2521 (38%)]	RMSE: 28.524510
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [1152/2521 (46%)]	RMSE: 28.445096
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [1344/2521 (54%)]	RMSE: 28.408057
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [1536/2521 (62%)]	RMSE: 28.355912
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [1728/2521 (69%)]	RMSE: 28.307923
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [1920/2521 (77%)]	RMSE: 28.248220
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [2112/2521 (85%)]	RMSE: 28.202408
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 13: Train [2304/2521 (92%)]	RMSE: 28.183498
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:18:36] INFO (nni/MainThread) Intermediate result: 0.7701046369782705  (Index 26)
+[2023-11-23 22:18:36] INFO (nni/MainThread) Intermediate result: 23.189296823674677  (Index 27)
+****ETPA Loss****
+Epoch 14: Train [0/2521 (0%)]	RMSE: 28.160517
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [192/2521 (8%)]	RMSE: 28.121790
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [384/2521 (15%)]	RMSE: 28.078960
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [576/2521 (23%)]	RMSE: 28.021057
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [768/2521 (31%)]	RMSE: 27.989933
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [960/2521 (38%)]	RMSE: 27.930527
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [1152/2521 (46%)]	RMSE: 27.876461
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [1344/2521 (54%)]	RMSE: 27.869967
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [1536/2521 (62%)]	RMSE: 27.850789
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [1728/2521 (69%)]	RMSE: 27.797377
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [1920/2521 (77%)]	RMSE: 27.769119
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [2112/2521 (85%)]	RMSE: 27.734355
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 14: Train [2304/2521 (92%)]	RMSE: 27.688734
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:19:07] INFO (nni/MainThread) Intermediate result: 0.7799129536514757  (Index 28)
+[2023-11-23 22:19:07] INFO (nni/MainThread) Intermediate result: 22.89839415464991  (Index 29)
+****ETPA Loss****
+Epoch 15: Train [0/2521 (0%)]	RMSE: 27.630812
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [192/2521 (8%)]	RMSE: 27.597447
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [384/2521 (15%)]	RMSE: 27.562089
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [576/2521 (23%)]	RMSE: 27.522872
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [768/2521 (31%)]	RMSE: 27.467345
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [960/2521 (38%)]	RMSE: 27.428195
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [1152/2521 (46%)]	RMSE: 27.396574
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [1344/2521 (54%)]	RMSE: 27.381304
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [1536/2521 (62%)]	RMSE: 27.349395
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [1728/2521 (69%)]	RMSE: 27.296498
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [1920/2521 (77%)]	RMSE: 27.254333
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [2112/2521 (85%)]	RMSE: 27.222582
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 15: Train [2304/2521 (92%)]	RMSE: 27.198848
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:19:42] INFO (nni/MainThread) Intermediate result: 0.7822593963389765  (Index 30)
+[2023-11-23 22:19:42] INFO (nni/MainThread) Intermediate result: 22.75904754462616  (Index 31)
+****ETPA Loss****
+Epoch 16: Train [0/2521 (0%)]	RMSE: 27.142112
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [192/2521 (8%)]	RMSE: 27.106012
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [384/2521 (15%)]	RMSE: 27.075491
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [576/2521 (23%)]	RMSE: 27.038921
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [768/2521 (31%)]	RMSE: 27.008758
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [960/2521 (38%)]	RMSE: 26.969554
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [1152/2521 (46%)]	RMSE: 26.924854
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [1344/2521 (54%)]	RMSE: 26.892441
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [1536/2521 (62%)]	RMSE: 26.867605
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [1728/2521 (69%)]	RMSE: 26.841784
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [1920/2521 (77%)]	RMSE: 26.813742
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [2112/2521 (85%)]	RMSE: 26.776645
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 16: Train [2304/2521 (92%)]	RMSE: 26.762237
+****ETPA Loss****
+****ETPA Loss****
+best model saved
+[2023-11-23 22:20:16] INFO (nni/MainThread) Intermediate result: 0.7877195126692283  (Index 32)
+[2023-11-23 22:20:16] INFO (nni/MainThread) Intermediate result: 22.446175407403537  (Index 33)
+****ETPA Loss****
+Epoch 17: Train [0/2521 (0%)]	RMSE: 26.726956
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [192/2521 (8%)]	RMSE: 26.680672
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [384/2521 (15%)]	RMSE: 26.657725
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [576/2521 (23%)]	RMSE: 26.648845
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [768/2521 (31%)]	RMSE: 26.604431
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [960/2521 (38%)]	RMSE: 26.565304
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [1152/2521 (46%)]	RMSE: 26.558539
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [1344/2521 (54%)]	RMSE: 26.516748
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [1536/2521 (62%)]	RMSE: 26.479834
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [1728/2521 (69%)]	RMSE: 26.450926
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [1920/2521 (77%)]	RMSE: 26.423761
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [2112/2521 (85%)]	RMSE: 26.396084
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 17: Train [2304/2521 (92%)]	RMSE: 26.364867
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:20:45] INFO (nni/MainThread) Intermediate result: 0.7615156127617869  (Index 34)
+[2023-11-23 22:20:45] INFO (nni/MainThread) Intermediate result: 22.28617386972842  (Index 35)
+****ETPA Loss****
+Epoch 18: Train [0/2521 (0%)]	RMSE: 26.338226
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [192/2521 (8%)]	RMSE: 26.306466
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [384/2521 (15%)]	RMSE: 26.269883
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [576/2521 (23%)]	RMSE: 26.247923
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [768/2521 (31%)]	RMSE: 26.205764
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [960/2521 (38%)]	RMSE: 26.169784
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [1152/2521 (46%)]	RMSE: 26.173622
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [1344/2521 (54%)]	RMSE: 26.151095
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [1536/2521 (62%)]	RMSE: 26.114138
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [1728/2521 (69%)]	RMSE: 26.079211
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [1920/2521 (77%)]	RMSE: 26.054127
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [2112/2521 (85%)]	RMSE: 26.025716
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 18: Train [2304/2521 (92%)]	RMSE: 26.004089
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:21:18] INFO (nni/MainThread) Intermediate result: 0.7631348984300449  (Index 36)
+[2023-11-23 22:21:18] INFO (nni/MainThread) Intermediate result: 22.159252808624316  (Index 37)
+****ETPA Loss****
+Epoch 19: Train [0/2521 (0%)]	RMSE: 25.969274
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [192/2521 (8%)]	RMSE: 25.944939
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [384/2521 (15%)]	RMSE: 25.922104
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [576/2521 (23%)]	RMSE: 25.886394
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [768/2521 (31%)]	RMSE: 25.856331
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [960/2521 (38%)]	RMSE: 25.821895
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [1152/2521 (46%)]	RMSE: 25.817563
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [1344/2521 (54%)]	RMSE: 25.784263
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [1536/2521 (62%)]	RMSE: 25.758380
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [1728/2521 (69%)]	RMSE: 25.724794
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [1920/2521 (77%)]	RMSE: 25.699085
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [2112/2521 (85%)]	RMSE: 25.675694
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 19: Train [2304/2521 (92%)]	RMSE: 25.645292
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:21:53] INFO (nni/MainThread) Intermediate result: 0.7694649783324903  (Index 38)
+[2023-11-23 22:21:53] INFO (nni/MainThread) Intermediate result: 21.89730758417202  (Index 39)
+****ETPA Loss****
+Epoch 20: Train [0/2521 (0%)]	RMSE: 25.607791
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [192/2521 (8%)]	RMSE: 25.584401
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [384/2521 (15%)]	RMSE: 25.547220
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [576/2521 (23%)]	RMSE: 25.525868
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [768/2521 (31%)]	RMSE: 25.497687
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [960/2521 (38%)]	RMSE: 25.493446
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [1152/2521 (46%)]	RMSE: 25.468615
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [1344/2521 (54%)]	RMSE: 25.447100
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [1536/2521 (62%)]	RMSE: 25.436762
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [1728/2521 (69%)]	RMSE: 25.407221
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [1920/2521 (77%)]	RMSE: 25.375109
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [2112/2521 (85%)]	RMSE: 25.346025
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 20: Train [2304/2521 (92%)]	RMSE: 25.327560
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:22:24] INFO (nni/MainThread) Intermediate result: 0.7808205388354056  (Index 40)
+[2023-11-23 22:22:24] INFO (nni/MainThread) Intermediate result: 21.688101670567896  (Index 41)
+****ETPA Loss****
+Epoch 21: Train [0/2521 (0%)]	RMSE: 25.290319
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [192/2521 (8%)]	RMSE: 25.272170
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [384/2521 (15%)]	RMSE: 25.251138
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [576/2521 (23%)]	RMSE: 25.222645
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [768/2521 (31%)]	RMSE: 25.215024
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [960/2521 (38%)]	RMSE: 25.186931
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [1152/2521 (46%)]	RMSE: 25.155457
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [1344/2521 (54%)]	RMSE: 25.120172
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [1536/2521 (62%)]	RMSE: 25.095561
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [1728/2521 (69%)]	RMSE: 25.067526
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [1920/2521 (77%)]	RMSE: 25.043617
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [2112/2521 (85%)]	RMSE: 25.031310
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 21: Train [2304/2521 (92%)]	RMSE: 25.006792
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:22:56] INFO (nni/MainThread) Intermediate result: 0.7775364708814642  (Index 42)
+[2023-11-23 22:22:56] INFO (nni/MainThread) Intermediate result: 21.51065799231783  (Index 43)
+****ETPA Loss****
+Epoch 22: Train [0/2521 (0%)]	RMSE: 24.985241
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [192/2521 (8%)]	RMSE: 24.976718
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [384/2521 (15%)]	RMSE: 24.946576
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [576/2521 (23%)]	RMSE: 24.935990
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [768/2521 (31%)]	RMSE: 24.907659
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [960/2521 (38%)]	RMSE: 24.879189
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [1152/2521 (46%)]	RMSE: 24.851183
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [1344/2521 (54%)]	RMSE: 24.826783
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [1536/2521 (62%)]	RMSE: 24.801332
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [1728/2521 (69%)]	RMSE: 24.784968
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [1920/2521 (77%)]	RMSE: 24.763341
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [2112/2521 (85%)]	RMSE: 24.736722
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 22: Train [2304/2521 (92%)]	RMSE: 24.710848
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:23:29] INFO (nni/MainThread) Intermediate result: 0.7852058214017111  (Index 44)
+[2023-11-23 22:23:29] INFO (nni/MainThread) Intermediate result: 21.270305166784354  (Index 45)
+****ETPA Loss****
+Epoch 23: Train [0/2521 (0%)]	RMSE: 24.695857
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [192/2521 (8%)]	RMSE: 24.670909
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [384/2521 (15%)]	RMSE: 24.650231
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [576/2521 (23%)]	RMSE: 24.636718
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [768/2521 (31%)]	RMSE: 24.626930
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [960/2521 (38%)]	RMSE: 24.600818
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [1152/2521 (46%)]	RMSE: 24.585834
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [1344/2521 (54%)]	RMSE: 24.562399
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [1536/2521 (62%)]	RMSE: 24.533359
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [1728/2521 (69%)]	RMSE: 24.517046
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [1920/2521 (77%)]	RMSE: 24.489622
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [2112/2521 (85%)]	RMSE: 24.472491
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 23: Train [2304/2521 (92%)]	RMSE: 24.452415
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:24:08] INFO (nni/MainThread) Intermediate result: 0.7692956155570935  (Index 46)
+[2023-11-23 22:24:08] INFO (nni/MainThread) Intermediate result: 21.054815154471726  (Index 47)
+****ETPA Loss****
+Epoch 24: Train [0/2521 (0%)]	RMSE: 24.421680
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [192/2521 (8%)]	RMSE: 24.403731
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [384/2521 (15%)]	RMSE: 24.384106
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [576/2521 (23%)]	RMSE: 24.360388
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [768/2521 (31%)]	RMSE: 24.336906
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [960/2521 (38%)]	RMSE: 24.334527
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [1152/2521 (46%)]	RMSE: 24.319910
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [1344/2521 (54%)]	RMSE: 24.300166
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [1536/2521 (62%)]	RMSE: 24.280581
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [1728/2521 (69%)]	RMSE: 24.250337
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [1920/2521 (77%)]	RMSE: 24.228932
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [2112/2521 (85%)]	RMSE: 24.212995
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 24: Train [2304/2521 (92%)]	RMSE: 24.194949
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:24:46] INFO (nni/MainThread) Intermediate result: 0.781797314897446  (Index 48)
+[2023-11-23 22:24:46] INFO (nni/MainThread) Intermediate result: 20.864355814284394  (Index 49)
+****ETPA Loss****
+Epoch 25: Train [0/2521 (0%)]	RMSE: 24.167110
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [192/2521 (8%)]	RMSE: 24.155856
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [384/2521 (15%)]	RMSE: 24.135164
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [576/2521 (23%)]	RMSE: 24.117579
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [768/2521 (31%)]	RMSE: 24.096947
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [960/2521 (38%)]	RMSE: 24.066329
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [1152/2521 (46%)]	RMSE: 24.045678
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [1344/2521 (54%)]	RMSE: 24.023480
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [1536/2521 (62%)]	RMSE: 24.004292
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [1728/2521 (69%)]	RMSE: 23.996254
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [1920/2521 (77%)]	RMSE: 23.983747
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [2112/2521 (85%)]	RMSE: 23.972655
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 25: Train [2304/2521 (92%)]	RMSE: 23.953207
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:25:17] INFO (nni/MainThread) Intermediate result: 0.7875902895142072  (Index 50)
+[2023-11-23 22:25:17] INFO (nni/MainThread) Intermediate result: 20.69724346469569  (Index 51)
+****ETPA Loss****
+Epoch 26: Train [0/2521 (0%)]	RMSE: 23.933140
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [192/2521 (8%)]	RMSE: 23.910191
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [384/2521 (15%)]	RMSE: 23.893200
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [576/2521 (23%)]	RMSE: 23.868220
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [768/2521 (31%)]	RMSE: 23.865046
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [960/2521 (38%)]	RMSE: 23.848725
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [1152/2521 (46%)]	RMSE: 23.831417
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [1344/2521 (54%)]	RMSE: 23.817171
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [1536/2521 (62%)]	RMSE: 23.798854
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [1728/2521 (69%)]	RMSE: 23.771638
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [1920/2521 (77%)]	RMSE: 23.756103
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [2112/2521 (85%)]	RMSE: 23.736517
+****ETPA Loss****
+****ETPA Loss****
+****ETPA Loss****
+Epoch 26: Train [2304/2521 (92%)]	RMSE: 23.712406
+****ETPA Loss****
+****ETPA Loss****
+[2023-11-23 22:25:52] INFO (nni/MainThread) Intermediate result: 0.7751916952179304  (Index 52)
+[2023-11-23 22:25:52] INFO (nni/MainThread) Intermediate result: 20.565929449448006  (Index 53)
+loaded model path: /home/sentanoe/joint_training/data/dataset/food_pd/sort_model/hidden_size-8.gcnru-pd_1700773831.4095571700773831.4095721
+best model loaded !!!
+krc:0.78 | lsd:0.468 | ed:0.959 | hr@1:0.657 | hr@2:0.906 | hr@3:0.941 | acc@1:0.657 | acc@2:0.604 | acc@3:0.559 |
+
+-------------------------------------------------------------
+Best epoch for G2R:  16
+Best epoch for ETPA:  26
+graph2route_pd Evaluation in test: krc:0.78 | lsd:0.468 | ed:0.959 | hr@1:0.657 | hr@2:0.906 | hr@3:0.941 | acc@1:0.657 | acc@2:0.604 | acc@3:0.559 |
+RankPETA Evaluation in test: rmse: 12.49	mae: 10.47	mape: 94.52%	acc@10: 55.0%	acc@20: 85.0%	acc@30: 100.0%	

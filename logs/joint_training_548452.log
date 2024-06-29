@@ -1,0 +1,410 @@
+Device:  cuda
+{'alpha_loss': 0.5,
+ 'batch_size': 64,
+ 'dataset': 'food_pd',
+ 'datatype': 'order',
+ 'device': device(type='cuda'),
+ 'early_stop': 10,
+ 'edge_fea_dim': 5,
+ 'embedding_dim': 32,
+ 'eval_end_1': 11,
+ 'eval_end_2': 25,
+ 'eval_start': 1,
+ 'gcn_num_layers': 2,
+ 'hidden_size': 8,
+ 'is_eval': False,
+ 'is_test': False,
+ 'k_min_nodes': 3,
+ 'k_nearest_neighbors': 'n-1',
+ 'lr': 0.001,
+ 'max_task_num': 25,
+ 'min_task_num': 0,
+ 'modelArrivalTime': 'RankPETA',
+ 'modelRoute': 'graph2route_pd',
+ 'no_cuda': False,
+ 'node_fea_dim': 8,
+ 'node_features_test': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_test_full.npy',
+ 'node_features_train': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_train_full.npy',
+ 'node_features_val': '/home/sentanoe/joint_training/data/dataset/food_pd/node_features_val_full.npy',
+ 'num_block': 2,
+ 'num_epoch': 1000,
+ 'num_head': 2,
+ 'num_worker_logistics': 2346,
+ 'num_worker_pd': 920,
+ 'pad_value': 26,
+ 'seed': 1999,
+ 'sort_mode': 'pnn_idx',
+ 'spatial_encoder': 'gcn',
+ 'temporal_encoder': 'tft',
+ 'test_path': '/home/sentanoe/joint_training/data/dataset/food_pd/test_full.npy',
+ 'train_mode': 'sort',
+ 'train_path': '/home/sentanoe/joint_training/data/dataset/food_pd/train_full.npy',
+ 'val_path': '/home/sentanoe/joint_training/data/dataset/food_pd/val_full.npy',
+ 'wd': 1e-05,
+ 'worker_emb_dim': 10,
+ 'workers': 2}
+last_x_size:13;unpick_x_size:12;input_size:53
+#train:2521 | #val:1257 | #test:1261
+*** Epoch: 0 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.697 | lsd:0.943 | ed:1.208 | hr@1:0.599 | hr@2:0.823 | hr@3:0.874 | acc@1:0.599 | acc@2:0.526 | acc@3:0.471 | Best krc: -1 | Best epoch: -1
+best model saved
+[2024-01-10 00:36:25] INFO (nni/MainThread) Intermediate result: 0.6967094137623215  (Index 0)
+-----------------ETPA RESULT-------------------
+Epoch 0: Validation	rmse: 24.17	mae: 18.92	mape: 69.43%	acc@10: 38.89%	acc@20: 61.48%	acc@30: 78.89%	
+[2024-01-10 00:36:25] INFO (nni/MainThread) Intermediate result: 24.17333822130735  (Index 1)
+*** Epoch: 1 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.748 | lsd:0.75 | ed:1.075 | hr@1:0.617 | hr@2:0.86 | hr@3:0.905 | acc@1:0.617 | acc@2:0.559 | acc@3:0.517 | Best krc: 0.697 | Best epoch: 0
+best model saved
+[2024-01-10 00:38:13] INFO (nni/MainThread) Intermediate result: 0.7483177649246735  (Index 2)
+-----------------ETPA RESULT-------------------
+Epoch 1: Validation	rmse: 21.66	mae: 16.77	mape: 80.96%	acc@10: 42.22%	acc@20: 66.67%	acc@30: 84.44%	
+[2024-01-10 00:38:13] INFO (nni/MainThread) Intermediate result: 21.66247150607273  (Index 3)
+*** Epoch: 2 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.764 | lsd:0.752 | ed:1.01 | hr@1:0.636 | hr@2:0.853 | hr@3:0.905 | acc@1:0.636 | acc@2:0.577 | acc@3:0.54 | Best krc: 0.748 | Best epoch: 1
+best model saved
+[2024-01-10 00:40:01] INFO (nni/MainThread) Intermediate result: 0.7639153885677716  (Index 4)
+-----------------ETPA RESULT-------------------
+Epoch 2: Validation	rmse: 21.75	mae: 16.73	mape: 95.29%	acc@10: 42.35%	acc@20: 67.41%	acc@30: 84.69%	
+[2024-01-10 00:40:01] INFO (nni/MainThread) Intermediate result: 21.747583300119985  (Index 5)
+*** Epoch: 3 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.77 | lsd:0.695 | ed:1.0 | hr@1:0.634 | hr@2:0.862 | hr@3:0.91 | acc@1:0.634 | acc@2:0.58 | acc@3:0.543 | Best krc: 0.764 | Best epoch: 2
+best model saved
+[2024-01-10 00:41:50] INFO (nni/MainThread) Intermediate result: 0.7699123487405081  (Index 6)
+-----------------ETPA RESULT-------------------
+Epoch 3: Validation	rmse: 21.8	mae: 16.71	mape: 102.62%	acc@10: 41.57%	acc@20: 68.06%	acc@30: 84.81%	
+[2024-01-10 00:41:50] INFO (nni/MainThread) Intermediate result: 21.797237920868046  (Index 7)
+*** Epoch: 4 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.762 | lsd:0.728 | ed:1.009 | hr@1:0.629 | hr@2:0.862 | hr@3:0.906 | acc@1:0.629 | acc@2:0.578 | acc@3:0.537 | Best krc: 0.77 | Best epoch: 3
+[2024-01-10 00:43:38] INFO (nni/MainThread) Intermediate result: 0.7621864352428409  (Index 8)
+-----------------ETPA RESULT-------------------
+Epoch 4: Validation	rmse: 20.58	mae: 15.85	mape: 100.03%	acc@10: 43.11%	acc@20: 70.37%	acc@30: 86.44%	
+[2024-01-10 00:43:38] INFO (nni/MainThread) Intermediate result: 20.582955936530258  (Index 9)
+*** Epoch: 5 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.772 | lsd:0.681 | ed:0.968 | hr@1:0.639 | hr@2:0.864 | hr@3:0.91 | acc@1:0.639 | acc@2:0.589 | acc@3:0.554 | Best krc: 0.77 | Best epoch: 3
+best model saved
+[2024-01-10 00:45:26] INFO (nni/MainThread) Intermediate result: 0.7719385869276554  (Index 10)
+-----------------ETPA RESULT-------------------
+Epoch 5: Validation	rmse: 19.81	mae: 15.33	mape: 99.13%	acc@10: 44.01%	acc@20: 71.36%	acc@30: 87.9%	
+[2024-01-10 00:45:26] INFO (nni/MainThread) Intermediate result: 19.810314551776273  (Index 11)
+*** Epoch: 6 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.764 | lsd:0.714 | ed:1.01 | hr@1:0.636 | hr@2:0.86 | hr@3:0.905 | acc@1:0.636 | acc@2:0.583 | acc@3:0.543 | Best krc: 0.772 | Best epoch: 5
+[2024-01-10 00:47:13] INFO (nni/MainThread) Intermediate result: 0.7638519416744165  (Index 12)
+-----------------ETPA RESULT-------------------
+Epoch 6: Validation	rmse: 19.0	mae: 14.73	mape: 95.78%	acc@10: 45.71%	acc@20: 73.39%	acc@30: 89.1%	
+[2024-01-10 00:47:13] INFO (nni/MainThread) Intermediate result: 18.999142109692905  (Index 13)
+*** Epoch: 7 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.775 | lsd:0.682 | ed:0.992 | hr@1:0.643 | hr@2:0.865 | hr@3:0.911 | acc@1:0.643 | acc@2:0.589 | acc@3:0.553 | Best krc: 0.772 | Best epoch: 5
+best model saved
+[2024-01-10 00:49:02] INFO (nni/MainThread) Intermediate result: 0.7752768241006106  (Index 14)
+-----------------ETPA RESULT-------------------
+Epoch 7: Validation	rmse: 18.49	mae: 14.38	mape: 95.17%	acc@10: 46.11%	acc@20: 74.21%	acc@30: 89.91%	
+[2024-01-10 00:49:02] INFO (nni/MainThread) Intermediate result: 18.494693003230843  (Index 15)
+*** Epoch: 8 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.765 | lsd:0.704 | ed:1.017 | hr@1:0.639 | hr@2:0.859 | hr@3:0.908 | acc@1:0.639 | acc@2:0.58 | acc@3:0.541 | Best krc: 0.775 | Best epoch: 7
+[2024-01-10 00:50:50] INFO (nni/MainThread) Intermediate result: 0.7650986342197537  (Index 16)
+-----------------ETPA RESULT-------------------
+Epoch 8: Validation	rmse: 18.2	mae: 14.19	mape: 95.19%	acc@10: 46.38%	acc@20: 74.69%	acc@30: 90.29%	
+[2024-01-10 00:50:50] INFO (nni/MainThread) Intermediate result: 18.201207982736246  (Index 17)
+*** Epoch: 9 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.78 | lsd:0.67 | ed:0.967 | hr@1:0.656 | hr@2:0.866 | hr@3:0.908 | acc@1:0.656 | acc@2:0.596 | acc@3:0.554 | Best krc: 0.775 | Best epoch: 7
+best model saved
+[2024-01-10 00:52:39] INFO (nni/MainThread) Intermediate result: 0.7797582931732473  (Index 18)
+-----------------ETPA RESULT-------------------
+Epoch 9: Validation	rmse: 17.96	mae: 14.0	mape: 94.51%	acc@10: 47.04%	acc@20: 75.19%	acc@30: 90.44%	
+[2024-01-10 00:52:39] INFO (nni/MainThread) Intermediate result: 17.961513501938608  (Index 19)
+*** Epoch: 10 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.786 | lsd:0.645 | ed:0.941 | hr@1:0.669 | hr@2:0.87 | hr@3:0.914 | acc@1:0.669 | acc@2:0.61 | acc@3:0.569 | Best krc: 0.78 | Best epoch: 9
+best model saved
+[2024-01-10 00:54:27] INFO (nni/MainThread) Intermediate result: 0.7856811934118448  (Index 20)
+-----------------ETPA RESULT-------------------
+Epoch 10: Validation	rmse: 17.66	mae: 13.83	mape: 93.89%	acc@10: 47.04%	acc@20: 75.56%	acc@30: 91.08%	
+[2024-01-10 00:54:27] INFO (nni/MainThread) Intermediate result: 17.66371454162134  (Index 21)
+*** Epoch: 11 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.788 | lsd:0.643 | ed:0.933 | hr@1:0.674 | hr@2:0.868 | hr@3:0.914 | acc@1:0.674 | acc@2:0.611 | acc@3:0.573 | Best krc: 0.786 | Best epoch: 10
+best model saved
+[2024-01-10 00:56:16] INFO (nni/MainThread) Intermediate result: 0.7880547799218547  (Index 22)
+-----------------ETPA RESULT-------------------
+Epoch 11: Validation	rmse: 17.4	mae: 13.66	mape: 93.03%	acc@10: 47.22%	acc@20: 76.14%	acc@30: 91.48%	
+[2024-01-10 00:56:16] INFO (nni/MainThread) Intermediate result: 17.404421271171586  (Index 23)
+*** Epoch: 12 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.785 | lsd:0.683 | ed:0.968 | hr@1:0.683 | hr@2:0.862 | hr@3:0.913 | acc@1:0.683 | acc@2:0.608 | acc@3:0.57 | Best krc: 0.788 | Best epoch: 11
+[2024-01-10 00:58:03] INFO (nni/MainThread) Intermediate result: 0.7851281659764389  (Index 24)
+-----------------ETPA RESULT-------------------
+Epoch 12: Validation	rmse: 17.21	mae: 13.51	mape: 92.45%	acc@10: 47.58%	acc@20: 76.55%	acc@30: 91.68%	
+[2024-01-10 00:58:03] INFO (nni/MainThread) Intermediate result: 17.211727342994447  (Index 25)
+*** Epoch: 13 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.789 | lsd:0.645 | ed:0.934 | hr@1:0.672 | hr@2:0.866 | hr@3:0.914 | acc@1:0.672 | acc@2:0.61 | acc@3:0.573 | Best krc: 0.788 | Best epoch: 11
+best model saved
+[2024-01-10 00:59:52] INFO (nni/MainThread) Intermediate result: 0.788849574044152  (Index 26)
+-----------------ETPA RESULT-------------------
+Epoch 13: Validation	rmse: 17.11	mae: 13.48	mape: 92.91%	acc@10: 47.28%	acc@20: 76.53%	acc@30: 91.93%	
+[2024-01-10 00:59:52] INFO (nni/MainThread) Intermediate result: 17.110975967275177  (Index 27)
+*** Epoch: 14 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.796 | lsd:0.641 | ed:0.919 | hr@1:0.707 | hr@2:0.869 | hr@3:0.915 | acc@1:0.707 | acc@2:0.632 | acc@3:0.596 | Best krc: 0.789 | Best epoch: 13
+best model saved
+[2024-01-10 01:01:41] INFO (nni/MainThread) Intermediate result: 0.7957852071975376  (Index 28)
+-----------------ETPA RESULT-------------------
+Epoch 14: Validation	rmse: 16.92	mae: 13.32	mape: 91.99%	acc@10: 47.83%	acc@20: 77.04%	acc@30: 92.22%	
+[2024-01-10 01:01:41] INFO (nni/MainThread) Intermediate result: 16.921048167994826  (Index 29)
+*** Epoch: 15 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.801 | lsd:0.629 | ed:0.92 | hr@1:0.718 | hr@2:0.864 | hr@3:0.916 | acc@1:0.718 | acc@2:0.628 | acc@3:0.591 | Best krc: 0.796 | Best epoch: 14
+best model saved
+[2024-01-10 01:03:30] INFO (nni/MainThread) Intermediate result: 0.8011274123211158  (Index 30)
+-----------------ETPA RESULT-------------------
+Epoch 15: Validation	rmse: 16.75	mae: 13.19	mape: 91.09%	acc@10: 48.1%	acc@20: 77.52%	acc@30: 92.45%	
+[2024-01-10 01:03:30] INFO (nni/MainThread) Intermediate result: 16.748745922644073  (Index 31)
+*** Epoch: 16 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.8 | lsd:0.656 | ed:0.929 | hr@1:0.719 | hr@2:0.864 | hr@3:0.916 | acc@1:0.719 | acc@2:0.631 | acc@3:0.592 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:05:17] INFO (nni/MainThread) Intermediate result: 0.8002408335158662  (Index 32)
+-----------------ETPA RESULT-------------------
+Epoch 16: Validation	rmse: 16.6	mae: 13.08	mape: 90.52%	acc@10: 48.21%	acc@20: 77.84%	acc@30: 92.72%	
+[2024-01-10 01:05:17] INFO (nni/MainThread) Intermediate result: 16.600751606006092  (Index 33)
+*** Epoch: 17 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.797 | lsd:0.682 | ed:0.943 | hr@1:0.714 | hr@2:0.869 | hr@3:0.916 | acc@1:0.714 | acc@2:0.634 | acc@3:0.592 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:07:06] INFO (nni/MainThread) Intermediate result: 0.7971308420805578  (Index 34)
+-----------------ETPA RESULT-------------------
+Epoch 17: Validation	rmse: 16.46	mae: 12.95	mape: 89.46%	acc@10: 48.62%	acc@20: 78.15%	acc@30: 92.9%	
+[2024-01-10 01:07:06] INFO (nni/MainThread) Intermediate result: 16.45527110203136  (Index 35)
+*** Epoch: 18 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.797 | lsd:0.625 | ed:0.939 | hr@1:0.694 | hr@2:0.875 | hr@3:0.92 | acc@1:0.694 | acc@2:0.624 | acc@3:0.585 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:08:55] INFO (nni/MainThread) Intermediate result: 0.7974994646966663  (Index 36)
+-----------------ETPA RESULT-------------------
+Epoch 18: Validation	rmse: 16.35	mae: 12.87	mape: 88.9%	acc@10: 48.95%	acc@20: 78.48%	acc@30: 93.0%	
+[2024-01-10 01:08:55] INFO (nni/MainThread) Intermediate result: 16.345350108727008  (Index 37)
+*** Epoch: 19 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.797 | lsd:0.639 | ed:0.936 | hr@1:0.701 | hr@2:0.871 | hr@3:0.918 | acc@1:0.701 | acc@2:0.631 | acc@3:0.587 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:10:43] INFO (nni/MainThread) Intermediate result: 0.7966954582608277  (Index 38)
+-----------------ETPA RESULT-------------------
+Epoch 19: Validation	rmse: 16.24	mae: 12.79	mape: 88.51%	acc@10: 49.11%	acc@20: 78.7%	acc@30: 93.22%	
+[2024-01-10 01:10:43] INFO (nni/MainThread) Intermediate result: 16.237173504378706  (Index 39)
+*** Epoch: 20 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.799 | lsd:0.649 | ed:0.934 | hr@1:0.706 | hr@2:0.871 | hr@3:0.918 | acc@1:0.706 | acc@2:0.634 | acc@3:0.59 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:12:30] INFO (nni/MainThread) Intermediate result: 0.799065148037601  (Index 40)
+-----------------ETPA RESULT-------------------
+Epoch 20: Validation	rmse: 16.18	mae: 12.76	mape: 88.46%	acc@10: 49.28%	acc@20: 78.78%	acc@30: 93.33%	
+[2024-01-10 01:12:30] INFO (nni/MainThread) Intermediate result: 16.182444827187407  (Index 41)
+*** Epoch: 21 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.798 | lsd:0.644 | ed:0.941 | hr@1:0.7 | hr@2:0.871 | hr@3:0.918 | acc@1:0.7 | acc@2:0.628 | acc@3:0.586 | Best krc: 0.801 | Best epoch: 15
+[2024-01-10 01:14:19] INFO (nni/MainThread) Intermediate result: 0.7976117778478952  (Index 42)
+-----------------ETPA RESULT-------------------
+Epoch 21: Validation	rmse: 16.12	mae: 12.72	mape: 88.4%	acc@10: 49.34%	acc@20: 78.87%	acc@30: 93.45%	
+[2024-01-10 01:14:19] INFO (nni/MainThread) Intermediate result: 16.117334944772985  (Index 43)
+*** Epoch: 22 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.806 | lsd:0.628 | ed:0.916 | hr@1:0.708 | hr@2:0.874 | hr@3:0.921 | acc@1:0.708 | acc@2:0.638 | acc@3:0.599 | Best krc: 0.801 | Best epoch: 15
+best model saved
+[2024-01-10 01:16:08] INFO (nni/MainThread) Intermediate result: 0.8061807405051832  (Index 44)
+-----------------ETPA RESULT-------------------
+Epoch 22: Validation	rmse: 16.03	mae: 12.66	mape: 88.01%	acc@10: 49.5%	acc@20: 79.08%	acc@30: 93.62%	
+[2024-01-10 01:16:08] INFO (nni/MainThread) Intermediate result: 16.026074103565524  (Index 45)
+*** Epoch: 23 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.809 | lsd:0.617 | ed:0.908 | hr@1:0.711 | hr@2:0.88 | hr@3:0.925 | acc@1:0.711 | acc@2:0.645 | acc@3:0.608 | Best krc: 0.806 | Best epoch: 22
+best model saved
+[2024-01-10 01:17:58] INFO (nni/MainThread) Intermediate result: 0.8090176014531063  (Index 46)
+-----------------ETPA RESULT-------------------
+Epoch 23: Validation	rmse: 15.95	mae: 12.6	mape: 87.61%	acc@10: 49.63%	acc@20: 79.26%	acc@30: 93.75%	
+[2024-01-10 01:17:58] INFO (nni/MainThread) Intermediate result: 15.94814455525407  (Index 47)
+*** Epoch: 24 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.806 | lsd:0.616 | ed:0.906 | hr@1:0.702 | hr@2:0.874 | hr@3:0.922 | acc@1:0.702 | acc@2:0.636 | acc@3:0.601 | Best krc: 0.809 | Best epoch: 23
+[2024-01-10 01:19:47] INFO (nni/MainThread) Intermediate result: 0.8064608131508001  (Index 48)
+-----------------ETPA RESULT-------------------
+Epoch 24: Validation	rmse: 15.86	mae: 12.52	mape: 86.59%	acc@10: 49.96%	acc@20: 79.41%	acc@30: 93.84%	
+[2024-01-10 01:19:47] INFO (nni/MainThread) Intermediate result: 15.86275474118874  (Index 49)
+*** Epoch: 25 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.805 | lsd:0.619 | ed:0.906 | hr@1:0.7 | hr@2:0.879 | hr@3:0.926 | acc@1:0.7 | acc@2:0.638 | acc@3:0.602 | Best krc: 0.809 | Best epoch: 23
+[2024-01-10 01:21:34] INFO (nni/MainThread) Intermediate result: 0.804977962651771  (Index 50)
+-----------------ETPA RESULT-------------------
+Epoch 25: Validation	rmse: 15.76	mae: 12.43	mape: 85.54%	acc@10: 50.21%	acc@20: 79.7%	acc@30: 93.95%	
+[2024-01-10 01:21:34] INFO (nni/MainThread) Intermediate result: 15.764311097098888  (Index 51)
+*** Epoch: 26 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.806 | lsd:0.616 | ed:0.898 | hr@1:0.71 | hr@2:0.877 | hr@3:0.923 | acc@1:0.71 | acc@2:0.644 | acc@3:0.605 | Best krc: 0.809 | Best epoch: 23
+[2024-01-10 01:23:23] INFO (nni/MainThread) Intermediate result: 0.805791625336881  (Index 52)
+-----------------ETPA RESULT-------------------
+Epoch 26: Validation	rmse: 15.69	mae: 12.36	mape: 84.8%	acc@10: 50.51%	acc@20: 79.88%	acc@30: 94.05%	
+[2024-01-10 01:23:23] INFO (nni/MainThread) Intermediate result: 15.68646037284377  (Index 53)
+*** Epoch: 27 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.807 | lsd:0.607 | ed:0.905 | hr@1:0.709 | hr@2:0.879 | hr@3:0.922 | acc@1:0.709 | acc@2:0.642 | acc@3:0.599 | Best krc: 0.809 | Best epoch: 23
+[2024-01-10 01:25:11] INFO (nni/MainThread) Intermediate result: 0.8071126512315842  (Index 54)
+-----------------ETPA RESULT-------------------
+Epoch 27: Validation	rmse: 15.61	mae: 12.3	mape: 84.18%	acc@10: 50.69%	acc@20: 80.08%	acc@30: 94.14%	
+[2024-01-10 01:25:11] INFO (nni/MainThread) Intermediate result: 15.610538462378182  (Index 55)
+*** Epoch: 28 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.813 | lsd:0.59 | ed:0.889 | hr@1:0.717 | hr@2:0.881 | hr@3:0.924 | acc@1:0.717 | acc@2:0.652 | acc@3:0.611 | Best krc: 0.809 | Best epoch: 23
+best model saved
+[2024-01-10 01:27:00] INFO (nni/MainThread) Intermediate result: 0.8128222600894223  (Index 56)
+-----------------ETPA RESULT-------------------
+Epoch 28: Validation	rmse: 15.56	mae: 12.26	mape: 83.86%	acc@10: 50.8%	acc@20: 80.22%	acc@30: 94.19%	
+[2024-01-10 01:27:00] INFO (nni/MainThread) Intermediate result: 15.558745899693387  (Index 57)
+*** Epoch: 29 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.814 | lsd:0.604 | ed:0.875 | hr@1:0.726 | hr@2:0.878 | hr@3:0.92 | acc@1:0.726 | acc@2:0.655 | acc@3:0.611 | Best krc: 0.813 | Best epoch: 28
+best model saved
+[2024-01-10 01:28:50] INFO (nni/MainThread) Intermediate result: 0.8143449256698054  (Index 58)
+-----------------ETPA RESULT-------------------
+Epoch 29: Validation	rmse: 15.5	mae: 12.23	mape: 83.66%	acc@10: 50.84%	acc@20: 80.28%	acc@30: 94.31%	
+[2024-01-10 01:28:50] INFO (nni/MainThread) Intermediate result: 15.503034552564689  (Index 59)
+*** Epoch: 30 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.814 | lsd:0.584 | ed:0.88 | hr@1:0.723 | hr@2:0.88 | hr@3:0.924 | acc@1:0.723 | acc@2:0.652 | acc@3:0.616 | Best krc: 0.814 | Best epoch: 29
+best model saved
+[2024-01-10 01:30:39] INFO (nni/MainThread) Intermediate result: 0.8144687539702843  (Index 60)
+-----------------ETPA RESULT-------------------
+Epoch 30: Validation	rmse: 15.45	mae: 12.19	mape: 83.31%	acc@10: 50.96%	acc@20: 80.42%	acc@30: 94.4%	
+[2024-01-10 01:30:39] INFO (nni/MainThread) Intermediate result: 15.4457899225091  (Index 61)
+*** Epoch: 31 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.817 | lsd:0.58 | ed:0.874 | hr@1:0.732 | hr@2:0.88 | hr@3:0.924 | acc@1:0.732 | acc@2:0.66 | acc@3:0.621 | Best krc: 0.814 | Best epoch: 30
+best model saved
+[2024-01-10 01:32:29] INFO (nni/MainThread) Intermediate result: 0.8174516720384669  (Index 62)
+-----------------ETPA RESULT-------------------
+Epoch 31: Validation	rmse: 15.4	mae: 12.15	mape: 82.98%	acc@10: 51.15%	acc@20: 80.53%	acc@30: 94.46%	
+[2024-01-10 01:32:29] INFO (nni/MainThread) Intermediate result: 15.404110626562403  (Index 63)
+*** Epoch: 32 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.812 | lsd:0.607 | ed:0.877 | hr@1:0.719 | hr@2:0.877 | hr@3:0.922 | acc@1:0.719 | acc@2:0.65 | acc@3:0.607 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:34:18] INFO (nni/MainThread) Intermediate result: 0.8123562715604693  (Index 64)
+-----------------ETPA RESULT-------------------
+Epoch 32: Validation	rmse: 15.37	mae: 12.13	mape: 82.88%	acc@10: 51.2%	acc@20: 80.61%	acc@30: 94.5%	
+[2024-01-10 01:34:18] INFO (nni/MainThread) Intermediate result: 15.37189274581585  (Index 65)
+*** Epoch: 33 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.812 | lsd:0.594 | ed:0.891 | hr@1:0.718 | hr@2:0.876 | hr@3:0.921 | acc@1:0.718 | acc@2:0.648 | acc@3:0.605 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:36:08] INFO (nni/MainThread) Intermediate result: 0.8115899630984896  (Index 66)
+-----------------ETPA RESULT-------------------
+Epoch 33: Validation	rmse: 15.32	mae: 12.09	mape: 82.59%	acc@10: 51.27%	acc@20: 80.73%	acc@30: 94.59%	
+[2024-01-10 01:36:08] INFO (nni/MainThread) Intermediate result: 15.31976562169259  (Index 67)
+*** Epoch: 34 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.814 | lsd:0.591 | ed:0.868 | hr@1:0.718 | hr@2:0.877 | hr@3:0.925 | acc@1:0.718 | acc@2:0.654 | acc@3:0.617 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:37:57] INFO (nni/MainThread) Intermediate result: 0.8141248878896452  (Index 68)
+-----------------ETPA RESULT-------------------
+Epoch 34: Validation	rmse: 15.27	mae: 12.06	mape: 82.32%	acc@10: 51.37%	acc@20: 80.85%	acc@30: 94.67%	
+[2024-01-10 01:37:57] INFO (nni/MainThread) Intermediate result: 15.26860978666833  (Index 69)
+*** Epoch: 35 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.811 | lsd:0.596 | ed:0.873 | hr@1:0.718 | hr@2:0.88 | hr@3:0.925 | acc@1:0.718 | acc@2:0.652 | acc@3:0.614 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:39:46] INFO (nni/MainThread) Intermediate result: 0.8114843588127367  (Index 70)
+-----------------ETPA RESULT-------------------
+Epoch 35: Validation	rmse: 15.22	mae: 12.03	mape: 82.09%	acc@10: 51.39%	acc@20: 80.94%	acc@30: 94.72%	
+[2024-01-10 01:39:46] INFO (nni/MainThread) Intermediate result: 15.221992601150117  (Index 71)
+*** Epoch: 36 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.812 | lsd:0.587 | ed:0.873 | hr@1:0.711 | hr@2:0.882 | hr@3:0.924 | acc@1:0.711 | acc@2:0.648 | acc@3:0.612 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:41:35] INFO (nni/MainThread) Intermediate result: 0.8124403096943543  (Index 72)
+-----------------ETPA RESULT-------------------
+Epoch 36: Validation	rmse: 15.19	mae: 12.01	mape: 81.89%	acc@10: 51.47%	acc@20: 80.97%	acc@30: 94.73%	
+[2024-01-10 01:41:35] INFO (nni/MainThread) Intermediate result: 15.192970733983271  (Index 73)
+*** Epoch: 37 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.811 | lsd:0.594 | ed:0.889 | hr@1:0.714 | hr@2:0.879 | hr@3:0.924 | acc@1:0.714 | acc@2:0.646 | acc@3:0.61 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:43:24] INFO (nni/MainThread) Intermediate result: 0.8113355885721429  (Index 74)
+-----------------ETPA RESULT-------------------
+Epoch 37: Validation	rmse: 15.15	mae: 11.97	mape: 81.55%	acc@10: 51.62%	acc@20: 81.09%	acc@30: 94.79%	
+[2024-01-10 01:43:24] INFO (nni/MainThread) Intermediate result: 15.147691893674697  (Index 75)
+*** Epoch: 38 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.806 | lsd:0.593 | ed:0.909 | hr@1:0.704 | hr@2:0.877 | hr@3:0.924 | acc@1:0.704 | acc@2:0.634 | acc@3:0.593 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:45:12] INFO (nni/MainThread) Intermediate result: 0.805632098067603  (Index 76)
+-----------------ETPA RESULT-------------------
+Epoch 38: Validation	rmse: 15.11	mae: 11.93	mape: 81.1%	acc@10: 51.79%	acc@20: 81.22%	acc@30: 94.83%	
+[2024-01-10 01:45:12] INFO (nni/MainThread) Intermediate result: 15.105453932705997  (Index 77)
+*** Epoch: 39 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.812 | lsd:0.599 | ed:0.88 | hr@1:0.714 | hr@2:0.874 | hr@3:0.923 | acc@1:0.714 | acc@2:0.646 | acc@3:0.611 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:47:01] INFO (nni/MainThread) Intermediate result: 0.8118367098253411  (Index 78)
+-----------------ETPA RESULT-------------------
+Epoch 39: Validation	rmse: 15.06	mae: 11.89	mape: 80.74%	acc@10: 51.89%	acc@20: 81.34%	acc@30: 94.88%	
+[2024-01-10 01:47:01] INFO (nni/MainThread) Intermediate result: 15.06330108768545  (Index 79)
+*** Epoch: 40 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.816 | lsd:0.576 | ed:0.871 | hr@1:0.722 | hr@2:0.88 | hr@3:0.925 | acc@1:0.722 | acc@2:0.653 | acc@3:0.617 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:48:51] INFO (nni/MainThread) Intermediate result: 0.8158133084586954  (Index 80)
+-----------------ETPA RESULT-------------------
+Epoch 40: Validation	rmse: 15.03	mae: 11.86	mape: 80.35%	acc@10: 52.01%	acc@20: 81.38%	acc@30: 94.91%	
+[2024-01-10 01:48:51] INFO (nni/MainThread) Intermediate result: 15.033481504604305  (Index 81)
+*** Epoch: 41 ***
+-----------------G2R RESULT-------------------
+
+val result: krc:0.817 | lsd:0.597 | ed:0.868 | hr@1:0.721 | hr@2:0.878 | hr@3:0.925 | acc@1:0.721 | acc@2:0.653 | acc@3:0.618 | Best krc: 0.817 | Best epoch: 31
+[2024-01-10 01:50:40] INFO (nni/MainThread) Intermediate result: 0.8172480896486144  (Index 82)
+-----------------ETPA RESULT-------------------
+Epoch 41: Validation	rmse: 15.01	mae: 11.84	mape: 80.04%	acc@10: 52.13%	acc@20: 81.46%	acc@30: 94.96%	
+[2024-01-10 01:50:40] INFO (nni/MainThread) Intermediate result: 15.006650718803522  (Index 83)
+loaded model path: /home/sentanoe/joint_training/data/dataset/food_pd/sort_model/hidden_size-8.gcnru-pd_1704843277.97677661704843277.9767914
+best model loaded !!!
+krc:0.798 | lsd:0.469 | ed:0.938 | hr@1:0.717 | hr@2:0.904 | hr@3:0.938 | acc@1:0.717 | acc@2:0.65 | acc@3:0.597 |
+
+-------------------------------------------------------------
+Best epoch for G2R:  31
+Best epoch for ETPA:  41
+graph2route_pd Evaluation in test: krc:0.798 | lsd:0.469 | ed:0.938 | hr@1:0.717 | hr@2:0.904 | hr@3:0.938 | acc@1:0.717 | acc@2:0.65 | acc@3:0.597 |
+RankPETA Evaluation in test: rmse: 12.26	mae: 9.5	mape: 73.15%	acc@10: 64.56%	acc@20: 91.14%	acc@30: 97.47%	

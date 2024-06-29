@@ -1,0 +1,13 @@
+/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/rnn.py:65: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.05 and num_layers=1
+  "num_layers={}".format(dropout, num_layers))
+Traceback (most recent call last):
+  File "run_joint.py", line 55, in <module>
+    graph2route_pd.main(params)
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
+    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
+  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1199, in run
+    size_dict = train_dataset.size()
+  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/utils/data/dataset.py", line 83, in __getattr__
+    raise AttributeError
+AttributeError
+srun: error: stud-000: task 0: Exited with exit code 1

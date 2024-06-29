@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "run_joint.py", line 55, in <module>
+    graph2route_pd.main(params)
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
+    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
+  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1193, in run
+    modelRoute = modelRoute(params)
+  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/model.py", line 92, in __init__
+    self.model_tft = TFT(config_tft)
+NameError: name 'TFT' is not defined
+srun: error: stud-000: task 0: Exited with exit code 1
