@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#SBATCH --job-name=joint_training
-#SBATCH --output=logs/joint_training_%j.log
-#SBATCH --error=logs/joint_training_%j.err
+#SBATCH --job-name=Graph2RETA
+#SBATCH --output=logs/Graph2RETA_%j.log
+#SBATCH --error=logs/Graph2RETA_%j.err
 #SBATCH --ntasks=1
 #SBATCH --mail-user=sentanoe@uni-hildesheim.de
 #SBATCH --partition=STUD
@@ -9,6 +9,6 @@
 
 set -e # Good Idea to stop operation on first error.
 
-cd ~/joint_training          # navigate to the directory if necessary
+cd ~/Graph2RETA          # navigate to the directory if necessary
 source activate env_graph2route
 srun python run_joint.py  --seed=2022 --spatial_encoder='gcn' --temporal_encoder='gru'       # python jobs require the srun command to work
