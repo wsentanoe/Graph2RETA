@@ -654,7 +654,7 @@ import nni, math
 
 
 def get_model_function_etpa(model):
-    import algorithm1.RankPETA as RankPETA
+    import ranketpa.RankPETA as RankPETA
 
     model_dict = {
         'RankPETA': (RankPETA.MyModel, RankPETA.save2file),
@@ -1250,8 +1250,8 @@ def get_nonzeros(pred_steps, label_steps, label_len, pred_len, pad_value):
 
 
 def get_model_function_g2r(model):
-    import algorithm.graph2route_pd.model as graph2route_pd
-    import algorithm.graph2route_logistics.model as graph2route_logistics
+    import graph2route.graph2route_pd.model as graph2route_pd
+    import graph2route.graph2route_logistics.model as graph2route_logistics
 
     model_dict = {
 

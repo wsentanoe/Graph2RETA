@@ -32,10 +32,10 @@ def get_params():
 def main(params):
     model = params['modelRoute']
     if model == 'graph2route_pd':
-        import algorithm.graph2route_pd.train as graph2route_pd
+        import graph2route.graph2route_pd.train as graph2route_pd
         graph2route_pd.main(params)
     """if model == 'graph2route_logistics':
-        import algorithm.graph2route_logistics.train as graph2route_logistics
+        import graph2route.graph2route_logistics.train as graph2route_logistics
         graph2route_logistics.main(params)"""
 
 def get_params():
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     # First get the common params
     params = vars(get_params())
 
-    import algorithm.graph2route_pd.train as graph2route_pd
+    import graph2route.graph2route_pd.train as graph2route_pd
 
     graph2route_pd.main(params)
 

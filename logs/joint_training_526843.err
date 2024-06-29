@@ -1,16 +1,0 @@
-  0%|          | 0/2 [00:00<?, ?it/s, current_loss=0, epoch=0, loss=0]  0%|          | 0/2 [00:00<?, ?it/s, current_loss=3.03, epoch=0, loss=3.03]  0%|          | 0/2 [00:00<?, ?it/s, current_loss=3.03, epoch=0, loss=3.03]
-Traceback (most recent call last):
-  File "run_joint.py", line 55, in <module>
-    graph2route_pd.main(params)
-  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
-    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1203, in run
-    result_dict = train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device, PROCESS_BATCH, TEST_MODEL, params, save2FileRoute,save2FileArrivalTime,modelArrivalTime)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 982, in train_val_test_g2r
-    pred_eta, loss_etpa, n  = modelArrivalTime(last_x, last_len, unpick_x, unpick_len,label_idx, label_order, label_eta, input_idx, input_order)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/sentanoe/joint_training/algorithm1/RankPETA.py", line 171, in forward
-    batch_size = torch.FloatTensor(unpick_len).to(self.args['device']).shape[0]
-TypeError: expected TensorOptions(dtype=float, device=cpu, layout=Strided, requires_grad=false (default), pinned_memory=false (default), memory_format=(nullopt)) (got TensorOptions(dtype=float, device=cuda:0, layout=Strided, requires_grad=false (default), pinned_memory=false (default), memory_format=(nullopt)))
-srun: error: stud-000: task 0: Exited with exit code 1

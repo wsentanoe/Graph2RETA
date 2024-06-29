@@ -1,26 +1,0 @@
-/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/rnn.py:65: UserWarning: dropout option adds dropout after all but last recurrent layer, so non-zero dropout expects num_layers greater than 1, but got dropout=0.05 and num_layers=1
-  "num_layers={}".format(dropout, num_layers))
-  0%|          | 0/40 [00:00<?, ?it/s, current_loss=0, epoch=0, loss=0]/home/sentanoe/joint_training/algorithm/graph2route_pd/tft.py:180: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
-  sparse_weights = self.softmax(sparse_weights).unsqueeze(2)
-  0%|          | 0/40 [00:00<?, ?it/s, current_loss=0, epoch=0, loss=0]
-Traceback (most recent call last):
-  File "run_joint.py", line 55, in <module>
-    graph2route_pd.main(params)
-  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 232, in main
-    run(params, Graph2RouteDataset, process_batch, test_model,collate_fn)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 1205, in run
-    result_dict = train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device, PROCESS_BATCH, TEST_MODEL, params, save2FileRoute,save2FileArrivalTime,modelArrivalTime)
-  File "/home/sentanoe/joint_training/my_utils/utils.py", line 932, in train_val_test_g2r
-    pred, loss_g2r, b_V_val_unmasked, index= process_batch(batch, modelRoute, device, params['pad_value'])
-  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/train.py", line 71, in process_batch
-    pred_scores, pred_pointers, b_V_val_unmasked = model.forward(V, V_reach_mask, V_ft, V_pt, V_dt, V_num, V_dispatch_mask, E, E_ed,  E_sd, np.array(E_mask), start_idx, cou)
-  File "/home/sentanoe/joint_training/algorithm/graph2route_pd/model.py", line 257, in forward
-    b_node_h = self.graph_linear(b_node_h)  # （B, T, N * d_h)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/module.py", line 1102, in _call_impl
-    return forward_call(*input, **kwargs)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/modules/linear.py", line 103, in forward
-    return F.linear(input, self.weight, self.bias)
-  File "/home/sentanoe/miniconda3/envs/env_graph2route/lib/python3.6/site-packages/torch/nn/functional.py", line 1848, in linear
-    return torch._C._nn.linear(input, weight, bias)
-RuntimeError: mat1 and mat2 shapes cannot be multiplied (768x216 and 8x216)
-srun: error: stud-000: task 0: Exited with exit code 1
