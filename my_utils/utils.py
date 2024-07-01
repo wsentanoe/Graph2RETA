@@ -1251,12 +1251,12 @@ def get_nonzeros(pred_steps, label_steps, label_len, pred_len, pad_value):
 
 def get_model_function_g2r(model):
     import graph2route.graph2route_pd.model as graph2route_pd
-    import graph2route.graph2route_logistics.model as graph2route_logistics
+    #import graph2route.graph2route_logistics.model as graph2route_logistics
 
     model_dict = {
 
         'graph2route_pd': (graph2route_pd.Graph2Route, graph2route_pd.save2file),
-        'graph2route_logistics': (graph2route_logistics.Graph2Route, graph2route_logistics.save2file),
+        #'graph2route_logistics': (graph2route_logistics.Graph2Route, graph2route_logistics.save2file),
 
     }
     model, save2file = model_dict[model]
