@@ -6,11 +6,15 @@ import torch
 import math
 
 """
+_KI_
+Need to figure our which file we are using for evulation of epta 
+eval.py or eval.etpa
+
 Evaluation Function
 """
 
 
-# For eta task
+# For eta taske
 def eta_eval(pred, label, metric='mae'):
     mask = label > 0
     label = label.masked_select(mask)
@@ -25,7 +29,6 @@ def eta_eval(pred, label, metric='mae'):
         k = int(metric.split('@')[1])
         tmp = torch.abs(pred - label) < k
         result = torch.sum(tmp).item() / tmp.shape[0]
-        #result = result * 100
     n = mask.sum().item()
     return result, n
 
@@ -40,7 +43,6 @@ def hit_rate(pred, label, lab_len, top_n=5):
     :param top_n:
     :return:
     """
-    # label_len = get_label_len(label)
     label_len = lab_len
     eval_num = min(top_n, label_len)
     hit_num = len(set(pred[:eval_num]) & set(label[:eval_num]))
@@ -99,7 +101,6 @@ def idx_weight(i, mode='linear'):
 
 
 def location_deviation(pred, label, label_len, mode='square'):
-    # label = label[:get_label_len(label)]
     label = label[:label_len]
 
     n = len(label)

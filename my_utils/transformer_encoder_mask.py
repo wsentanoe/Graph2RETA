@@ -55,10 +55,6 @@ class SkipConnection(nn.Module):
         self.module = module
         self.is_mask = is_mask
 
-    # def forward(self, input):
-    #     return input + self.module(input)
-    #
-
     def forward(self, input):
         if self.is_mask:
             old_input, h, mask = input

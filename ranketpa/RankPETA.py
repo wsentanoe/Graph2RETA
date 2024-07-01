@@ -1,4 +1,3 @@
-####################################
 import os
 import platform
 import sys
@@ -7,14 +6,13 @@ if platform.system() == 'Linux':
     file = '/data/MengQingqiang/eta/peta_6_25/'
     sys.path.append(file)
     sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk(file) for name in dirs])
-#################################
+
 import time, torch, nni, logging
 from torch import nn
 import torch.nn.functional as F
 import numpy as np
 from my_utils.utils import ws, mask_loss, MyDataset, get_common_params
-# from my_utils1.transformer_encoder_mask import TransformerEncoder
-# from my_utils1.transformer_encoder_mask import get_transformer_attn_mask
+
 from my_utils.transformer_encoder_mask import TransformerEncoder
 from my_utils.transformer_encoder_mask import get_transformer_attn_mask
 
@@ -53,6 +51,12 @@ def rnn_forwarder(rnn, embedded_inputs, input_lengths, batch_size):
     """
     packed = nn.utils.rnn.pack_padded_sequence(embedded_inputs, input_lengths.cpu(),
                                                batch_first=rnn.batch_first, enforce_sorted=False)
+
+
+    _KI_
+    # Unpack padding
+    # Check Index Naming convention
+                                        
     """
 
     outputs, hidden = rnn(embedded_inputs.to(device))
@@ -65,12 +69,8 @@ def rnn_forwarder(rnn, embedded_inputs, input_lengths, batch_size):
     except:
         print('lstm encoder:', embedded_inputs.to(device))
 
-    # print("embedded_inputs222222222", embedded_inputs.get_device(), type(embedded_inputs))
 
-    # Unpack padding
-    # outputs, index = nn.utils.rnn.pad_packed_sequence(outputs, batch_first=rnn.batch_first)
     index = input_lengths.to(device)
-    # print(index.get_device(), type(index))
 
     # Return output and final hidden state
     if rnn.bidirectional:
@@ -79,11 +79,7 @@ def rnn_forwarder(rnn, embedded_inputs, input_lengths, batch_size):
 
     index2 = index - torch.tensor([1]).to(device)  # 选取操作  Select Operatin
     index1 = torch.tensor(list(range(len(index2)))).to(device)  # 生成第一维度 Generate the First Dimension
-    # print(index2)
-    # print(index1)
-    # print("ind1", index1.get_device(), type(index1), "ind2", index2.get_device(), type(index2))
-
-    # to avaoid the IndexError: tensors used as indices must be long, byte or bool tensors
+    
     index1 = index1.to(torch.int64)
     index2 = index2.to(torch.int64)
 
@@ -131,10 +127,6 @@ class MyModel(nn.Module):
                                               embed_dim=self.hidden_size, n_layers=self.number_layer,
                                               normalization='batch')
         # prediction
-        # self.liner_ETA = nn.Sequential(nn.Linear(in_features=2*self.hidden_size + self.max_len + global_feature_size + 1 + self.embedding_dim,
-        #                                          out_features=(self.hidden_size + self.max_len + self.hidden_size) // 2, bias=False), nn.ELU(),
-        #                                nn.Linear(in_features=(self.hidden_size + self.max_len + self.hidden_size) // 2, out_features=32, bias=False), nn.ELU(),
-        #                                nn.Linear(in_features=32, out_features=1, bias=False), nn.ReLU())
         self.liner_ETA = nn.Sequential(
             nn.Linear(in_features=2 * self.hidden_size + self.max_len + global_feature_size + 1 + self.embedding_dim,
                       out_features=(self.hidden_size + self.max_len + self.hidden_size) // 2, bias=False), nn.ELU(),
@@ -202,9 +194,6 @@ class MyModel(nn.Module):
 
         # Prediction Module
         # 先对 global_x 进行扩充为(batch_size*max_len*feature_size)
-        # global_x = global_x.unsqueeze(1)
-        # global_x = global_x.repeat(1, self.max_len, 1)
-
         # CompactETA pos
         x = torch.cat([unpick_x.to(device), order_info], dim=2)
         attn_mask = get_transformer_attn_mask(max_seq_len=self.max_len, sort_len=unpick_len, batch_size=batch_size)
@@ -221,17 +210,10 @@ class MyModel(nn.Module):
         F_output = torch.squeeze(hidden_result)
         pad = nn.ZeroPad2d(padding=(0, self.max_len - F_output.shape[1], 0, 0))
         F_output = pad(F_output)
-        # print("******* LABEL ETA:*******",label_eta)
         mask = label_eta > 0.00001
         F_output *= mask.to(device)
-        # print("******* F_output:*******",F_output)
-
         # 更改了一下损失函数的计算  由于有的不足 25 个padding的 0 所以应该是sum loss除以真实长度
         loss_eta, n = mask_loss(F_output, label_eta)
-        # if self.is_train_ptr:
-        #     loss = self.W * loss_sort + (torch.tensor([1]).cuda() - self.W) * loss_eta
-        # else:
-        #     loss = loss_eta
         return F_output, loss_eta, n
 
     def model_file_name(self):
@@ -264,7 +246,10 @@ def get_sinusoid_encoding_table(n_position, d_hid, padding_idx=None):
 
 
 def save2file(params):
-    #################################Generating CSV with Header and Data#################################################
+    """
+    # Generating CSV with Header and Data #
+
+    """
     import csv
     file_name = ws + '/output/output_RankPETA.csv'
     # 写表头  # Write Header
@@ -291,7 +276,6 @@ def save2file(params):
             str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())), params['is_test']
         ]
         csv_file.writerow(data)
-    ##################################################################################
 
 
 def get_params():

@@ -6,11 +6,9 @@ import torch
 import math
 
 """
-Evaluation Function
+    Evaluation Functions Seperatley for evulating performance of ETPA and Graph2Route
+
 """
-
-
-# For eta task
 def eta_eval(pred, label, metric='mae'):
     mask = label > 0
     label = label.masked_select(mask)
@@ -29,8 +27,6 @@ def eta_eval(pred, label, metric='mae'):
     n = mask.sum().item()
     return result, n
 
-
-# For sorting task
 def hit_rate(pred, label, lab_len, top_n=5):
     """
     Get the top-n hit rate of the prediction
@@ -40,7 +36,6 @@ def hit_rate(pred, label, lab_len, top_n=5):
     :param top_n:
     :return:
     """
-    # label_len = get_label_len(label)
     label_len = lab_len
     eval_num = min(top_n, label_len)
     hit_num = len(set(pred[:eval_num]) & set(label[:eval_num]))
@@ -99,7 +94,6 @@ def idx_weight(i, mode='linear'):
 
 
 def location_deviation(pred, label, label_len, mode='square'):
-    # label = label[:get_label_len(label)]
     label = label[:label_len]
 
     n = len(label)
