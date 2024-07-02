@@ -6,8 +6,8 @@ import torch.nn.functional as F
 # os.environ["CUDA_VISIBLE_DEVICES"] = '0,1,2,4,5,6,7'
 from tqdm import tqdm
 from evaluation.eval_route import Metric
-from my_utils.utils import run, dict_merge
-from my_utils.utils import get_nonzeros
+from utils.utils import run, dict_merge
+from utils.utils import get_nonzeros
 from graph2route.graph2route_pd.model import Graph2RouteDataset
 import pickle
 from pathlib import Path
@@ -261,7 +261,7 @@ def main(params):
 
 
 def get_params():
-    from my_utils.utils import get_common_params
+    from utils.utils import get_common_params
     parser = get_common_params()
     args, _ = parser.parse_known_args()
     return args

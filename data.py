@@ -1,6 +1,6 @@
 import pickle
 import numpy as np
-from my_utils.utils import ws
+from utils.utils import ws
 train_path = ws + f'/data/train_order.npy'
 test_path = ws + f'/data/test_order.npy'
 

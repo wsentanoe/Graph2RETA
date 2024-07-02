@@ -6,7 +6,7 @@ from graph2route.graph2route_pd.decoder import Decoder
 from graph2route.graph2route_pd.tft import TFT
 import time
 import pickle
-from my_utils.utils import preprocess_food
+from utils.utils import preprocess_food
 
 
 # from graph2route.egat import EGATConv
@@ -397,11 +397,11 @@ class Graph2RouteDataset(Dataset):
 
 
 # ---Log--
-from my_utils.utils import save2file_meta
+from utils.utils import save2file_meta
 
 
 def save2file(params):
-    from my_utils.utils import ws
+    from utils.utils import ws
     file_name = ws + f'/output/food_pd/{params["modelRoute"]}.csv'
     # 写表头
     head = [

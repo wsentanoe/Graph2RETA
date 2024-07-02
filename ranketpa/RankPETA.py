@@ -11,10 +11,10 @@ import time, torch, nni, logging
 from torch import nn
 import torch.nn.functional as F
 import numpy as np
-from my_utils.utils import ws, mask_loss, MyDataset, get_common_params
+from utils.utils import ws, mask_loss, MyDataset, get_common_params
 
-from my_utils.transformer_encoder_mask import TransformerEncoder
-from my_utils.transformer_encoder_mask import get_transformer_attn_mask
+from utils.transformer_encoder_mask import TransformerEncoder
+from utils.transformer_encoder_mask import get_transformer_attn_mask
 
 # change 25- > 27
 max_len = 27
