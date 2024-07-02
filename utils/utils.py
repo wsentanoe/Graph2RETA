@@ -653,14 +653,14 @@ import time
 import nni, math
 
 
-def get_model_function_etpa(model):
+def get_model_function_etpa():
     import ranketpa.RankPETA as RankPETA
 
-    model_dict = {
-        'RankPETA': (RankPETA.MyModel, RankPETA.save2file),
-    }
-    Model, Save2File = model_dict[model]
-    return Model, Save2File
+    # model_dict = {
+    #     'RankPETA': (RankPETA.MyModel, RankPETA.save2file),
+    # }
+    # Model, Save2File = model_dict[model]
+    return RankPETA.MyModel, RankPETA.save2file
 
 
 from pprint import pprint
@@ -912,6 +912,7 @@ def get_common_params():
     parser.add_argument('--modelRoute', type=str, default="graph2route_pd", metavar='N', help='')
     parser.add_argument('--modelArrivalTime', type=str, default="RankPETA", metavar='N', help='')
     parser.add_argument('--alpha_loss', type=float, default=0.5, metavar='N', help='')
+    parser.add_argument('--scheduled_alpha', type=bool, default=True, metavar='N', help='')
     return parser
 
 
@@ -943,10 +944,11 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
     train_loss = AverageMeter_etpa()
     optimizer = Adam([{'params': modelRoute.parameters()}, {'params': modelArrivalTime.parameters()}], lr=params['lr'],
                      weight_decay=params['wd'])
-    # optimizer = Adam(modelRoute.parameters(), lr=params['lr'], weight_decay=params['wd'])
-    #    Early Stop Implementation
+
+    # Early Stop Implementation
     early_stop_g2r = EarlyStop_G2R(mode='maximize', patience=params['early_stop'])
     early_stop_etpa = EarlyStop_ETPA(mode='maximize', patience=params['early_stop'])
+
     # Evaluation Metric for ETPA
     val_result_etpa, test_result_etpa = EtaMetric(), EtaMetric()
 
@@ -958,13 +960,13 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
 
     dir_check(modelRoute_path)
     dir_check(modelArrivelTime_path)
-    # torch.autograd.set_detect_anomaly(True)
+
     torch.cuda.amp.autocast(enabled=False)
-    alpha_search_values = [0.1, 0.3, 0.5, 0.7, 0.9]  # You can adjust this list based on your needs
 
     train_loss_output = np.array([])
     val_loss_output = np.array([])
 
+    # Training
     for epoch in range(params['num_epoch']):
         if early_stop_g2r.stop_flag and early_stop_etpa.stop_flag: break
         postfix = {"epoch": epoch, "loss": 0.0, "current_loss": 0.0}  # Combine Parameters , Epochs, loss, currentlos
@@ -977,6 +979,7 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
         train_loss_batch = np.array([])
         print(f"*** Epoch: {epoch} ***")
 
+        # Define the scheduled alpha
         scheduled_alpha = 0.9
         if epoch >= 20:
             scheduled_alpha = 0.1
@@ -993,10 +996,11 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
             modelArrivalTime.train()
             eval_batch = len(train_loader) // 10  # evaluate the model  about 10 times for each epoch
             if eval_batch == 0: eval_batch = len(train_loader) - 1
-            # print('Evaluate the model for each %s batch' % eval_batch)
+
             for i, batch in enumerate(t):
+                # Compute the route prediction using the Graph2Route model
                 pred, loss_g2r, b_V_val_unmasked, index = process_batch(batch, modelRoute, device, params['pad_value'])
-                # print(" Loss g2R :",loss_g2r)
+
                 total_pred_pointers = torch.cat((total_pred_pointers, pred), 0)
                 total_node_features = torch.cat((total_node_features, b_V_val_unmasked), 0)
                 total_index = torch.cat((total_index, index), 0)
@@ -1035,8 +1039,8 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
                 label_eta = np.array(label_eta)
                 label_order = np.array(label_order)
                 label_idx = np.array(label_idx)
-                #  change the data type of ETPA parameters arrays->Tensors
 
+                #  change the data type of ETPA parameters arrays->Tensors
                 last_x = torch.FloatTensor(last_x)
                 last_len = torch.FloatTensor(last_len)
                 unpick_x = torch.FloatTensor(unpick_x)
@@ -1058,33 +1062,24 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
                 label_order = label_order.reshape((_B * _T, _N))
                 label_idx = label_idx.reshape((_B * _T, _N))
 
+                # Compute the arrival time estimation using the predicted route and additional raw features
                 pred_eta, loss_etpa, n = modelArrivalTime(last_x, last_len, unpick_x, unpick_len, label_idx,
                                                           label_order, label_eta, input_idx, input_order)
-                # print("ETPA LOSS:\n",loss_etpa)
+
                 optimizer.zero_grad()
-                alpha = scheduled_alpha #params['alpha_loss']
-                # g2r_alpha=alpha * loss_g2r
-                # print("Before Combine:",g2r_alpha)
-                # etpa_alpha=(1 - alpha) * loss_etpa
-                # print("Before Combine etpa_alpha:",etpa_alpha)
+
+                # Compute the joint loss
+                alpha = scheduled_alpha if params['scheduled_alpha'] is True else params['alpha_loss']
                 joint_loss = alpha * loss_g2r + (1 - alpha) * (loss_etpa / 10)
                 train_loss_batch = np.append(train_loss_batch, joint_loss.cpu().detach().numpy())
-                # best_alpha, best_joint_loss = evaluate_performance(alpha_search_values, loss_g2r, loss_etpa)
-
-                # print(f" Best alpha: {best_alpha}")
-                # print(f"Best joint loss: {best_joint_loss}")
 
                 if torch.isnan(joint_loss):
                     print(" Detected NaN loss. Skipping backward pass.")
                 else:
                     joint_loss.backward()
-                    #torch.nn.utils.clip_grad_norm_(modelRoute.parameters(), max_norm=0.5)
-                    #torch.nn.utils.clip_grad_norm_(modelArrivalTime.parameters(), max_norm=0.5)
                     optimizer.step()
 
                 eta_mse, n = mask_loss(pred_eta, label_eta)
-                # ETPA Loss
-                # print("****ETPA Loss****")
                 train_loss.update(eta_mse.item(), n)
                 """if i % eval_batch == 0:
                     print('Epoch {}: Train [{}/{} ({:.0f}%)]\tRMSE: {:.6f}'
@@ -1093,41 +1088,40 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
 
             train_loss_output = np.append(train_loss_output, np.mean(train_loss_batch))
 
-            # if params['is_test']: break
-
             if params['is_test']: break
 
-            # Define the file name of the output file (.pkl)
-            output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
+            # # Define the file name of the output file (.pkl)
+            # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
+            #
+            # # Initialize the dictionary for the output
+            # output_dict = {}
+            #
+            # # Check if file exists
+            # if Path(output_fname).is_file():
+            #     output_dict = np.load(output_fname, allow_pickle=True)
+            #
+            # # Append the data to the dictionary
+            # output_dict[str(epoch)] = total_pred_pointers
+            #
+            # # Store the data to the file
+            # with open(output_fname, 'wb') as df_file:
+            #     pickle.dump(obj=output_dict, file=df_file)
+            #
+            # # Store node feature data into a file
+            # output_dict_node = {}
+            # output_dict_node['V_val'] = total_node_features
+            # output_fname_node = 'node_features_train_.npy'
+            # with open(output_fname_node, 'wb') as df_file:
+            #     pickle.dump(obj=output_dict_node, file=df_file)
+            #
+            # # Store node feature data into a file
+            # output_dict_index = {}
+            # output_dict_index['index'] = total_index
+            # output_fname_index = f'index_train_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
+            # with open(output_fname_index, 'wb') as df_file:
+            #     pickle.dump(obj=output_dict_index, file=df_file)
 
-            # Initialize the dictionary for the output
-            output_dict = {}
-
-            # Check if file exists
-            if Path(output_fname).is_file():
-                output_dict = np.load(output_fname, allow_pickle=True)
-
-            # Append the data to the dictionary
-            output_dict[str(epoch)] = total_pred_pointers
-
-            # Store the data to the file
-            with open(output_fname, 'wb') as df_file:
-                pickle.dump(obj=output_dict, file=df_file)
-
-            # Store node feature data into a file
-            output_dict_node = {}
-            output_dict_node['V_val'] = total_node_features
-            output_fname_node = 'node_features_train_.npy'
-            with open(output_fname_node, 'wb') as df_file:
-                pickle.dump(obj=output_dict_node, file=df_file)
-
-            # Store node feature data into a file
-            output_dict_index = {}
-            output_dict_index['index'] = total_index
-            output_fname_index = f'index_train_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
-            with open(output_fname_index, 'wb') as df_file:
-                pickle.dump(obj=output_dict_index, file=df_file)
-
+            # Validation process
             val_result_g2r, pred_etpa, val_lable_eta, val_loss_epoch = test_model(modelRoute, val_loader, device, params['pad_value'],
                                                                   params, save2FileRoute, 'val', modelArrivalTime,
                                                                   save2FileArrivalTime)
@@ -1176,31 +1170,32 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
     except:
         print('load best model failed')
 
-    # Define the file name of the output file (.pkl)
-    output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
+    # # Define the file name of the output file (.pkl)
+    # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
+    #
+    # # Initialize the dictionary for the output
+    # temp_dict = {}
+    # output_dict = {}
+    #
+    # # Check if file exists
+    # if Path(output_fname).is_file():
+    #     temp_dict = np.load(output_fname, allow_pickle=True)
+    #
+    # output_dict['pred_pointers_train'] = temp_dict[str(early_stop_g2r.best_epoch)]
+    #
+    # # Store the data to the file
+    # with open(output_fname, 'wb') as df_file:
+    #     pickle.dump(obj=output_dict, file=df_file)
+    #
+    # # Store the loss
+    # loss_dict = {}
+    # loss_dict['train'] = train_loss_output
+    # loss_dict['val'] = val_loss_output
+    # output_fname_loss = f'loss_joint_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
+    # with open(output_fname_loss, 'wb') as df_file:
+    #     pickle.dump(obj=loss_dict, file=df_file)
 
-    # Initialize the dictionary for the output
-    temp_dict = {}
-    output_dict = {}
-
-    # Check if file exists
-    if Path(output_fname).is_file():
-        temp_dict = np.load(output_fname, allow_pickle=True)
-
-    output_dict['pred_pointers_train'] = temp_dict[str(early_stop_g2r.best_epoch)]
-
-    # Store the data to the file
-    with open(output_fname, 'wb') as df_file:
-        pickle.dump(obj=output_dict, file=df_file)
-
-    # Store the loss
-    loss_dict = {}
-    loss_dict['train'] = train_loss_output
-    loss_dict['val'] = val_loss_output
-    output_fname_loss = f'loss_joint_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
-    with open(output_fname_loss, 'wb') as df_file:
-        pickle.dump(obj=loss_dict, file=df_file)
-
+    # Test process
     test_result, test_pred_etpa, test_lable_eta = test_model(modelRoute, test_loader, device, params['pad_value'],
                                                              params, save2FileRoute, 'test', modelArrivalTime,
                                                              save2FileArrivalTime)
@@ -1249,18 +1244,18 @@ def get_nonzeros(pred_steps, label_steps, label_len, pred_len, pad_value):
         torch.LongTensor(label_len_list), torch.LongTensor(pred_len_list)
 
 
-def get_model_function_g2r(model):
+def get_model_function_g2r():
     import graph2route.graph2route_pd.model as graph2route_pd
     #import graph2route.graph2route_logistics.model as graph2route_logistics
 
-    model_dict = {
-
-        'graph2route_pd': (graph2route_pd.Graph2Route, graph2route_pd.save2file),
-        #'graph2route_logistics': (graph2route_logistics.Graph2Route, graph2route_logistics.save2file),
-
-    }
-    model, save2file = model_dict[model]
-    return model, save2file
+    # model_dict = {
+    #
+    #     'graph2route_pd': (graph2route_pd.Graph2Route, graph2route_pd.save2file),
+    #     #'graph2route_logistics': (graph2route_logistics.Graph2Route, graph2route_logistics.save2file),
+    #
+    # }
+    # model, save2file = model_dict[model]
+    return graph2route_pd.Graph2Route, graph2route_pd.save2file
 
 
 #  Only one run function we have and it is from g2r
@@ -1286,21 +1281,24 @@ def run(params, DATASET, PROCESS_BATCH, TEST_MODEL, collate_fn=None):
                              drop_last=True)
 
     # train, valid and test
-    net_models = ['graph2route_pd', 'graph2route_logistics']
+    # net_models = ['graph2route_pd']
     # print("Model route is :",params['modelRoute'])
     # print("Model ETPA is :",params['modelArrivalTime'])
-    modelRoute, save2FileRoute = get_model_function_g2r(params['modelRoute'])
+
+    # Get the Graph2Route model and initialize it
+    modelRoute, save2FileRoute = get_model_function_g2r()
     modelRoute = modelRoute(params)
 
-    #  Here add - ETPA main function before calling train_val_test
-    # ModelDataset -twice
-    modelArrivalTime, save2FileArrivalTime = get_model_function_etpa(params['modelArrivalTime'])
+    # Get the RankETPA model and initialize it
+    modelArrivalTime, save2FileArrivalTime = get_model_function_etpa()
     size_dict = train_dataset.size()
     print(';'.join([f'{k}:{v}' for k, v in size_dict.items()]))
     print(f"#train:{len(train_dataset)} | #val:{len(val_dataset)} | #test:{len(test_dataset)}")
 
     params = dict_merge([size_dict, params])
     modelArrivalTime = modelArrivalTime(params)
+
+    # Start the train, val, and test process
     result_dict, loss, etpa_result = train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device, PROCESS_BATCH,
                                      TEST_MODEL, params, save2FileRoute, save2FileArrivalTime, modelArrivalTime)
     params = dict_merge([etpa_result, params])

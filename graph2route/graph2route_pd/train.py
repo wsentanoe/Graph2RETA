@@ -260,26 +260,26 @@ def main(params):
     run(params, Graph2RouteDataset, process_batch, test_model, collate_fn)
 
 
-def get_params():
-    from utils.utils import get_common_params
-    parser = get_common_params()
-    args, _ = parser.parse_known_args()
-    return args
+# def get_params():
+#     from utils.utils import get_common_params
+#     parser = get_common_params()
+#     args, _ = parser.parse_known_args()
+#     return args
 
 
-if __name__ == "__main__":
-
-    import time, nni
-    import logging
-
-    logger = logging.getLogger('training')
-    try:
-        tuner_params = nni.get_next_parameter()
-        logger.debug(tuner_params)
-        params = vars(get_params())
-        params.update(tuner_params)
-
-        main(params)
-    except Exception as exception:
-        logger.exception(exception)
-        raise
+# if __name__ == "__main__":
+#
+#     import time, nni
+#     import logging
+#
+#     logger = logging.getLogger('training')
+#     try:
+#         tuner_params = nni.get_next_parameter()
+#         logger.debug(tuner_params)
+#         params = vars(get_params())
+#         params.update(tuner_params)
+#
+#         main(params)
+#     except Exception as exception:
+#         logger.exception(exception)
+#         raise
