@@ -1,9 +1,9 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from graph2route.graph2route_pd.encoder import GCNLayer, GATPyG, GATV2
-from graph2route.graph2route_pd.decoder import Decoder
-from graph2route.graph2route_pd.tft import TFT
+from models.graph2route.graph2route_pd.encoder import GCNLayer, GATPyG, GATV2
+from models.graph2route.graph2route_pd.decoder import Decoder
+from models.graph2route.graph2route_pd.tft import TFT
 import time
 import pickle
 from utils.utils import preprocess_food

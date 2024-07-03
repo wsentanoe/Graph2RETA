@@ -31,7 +31,7 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-from ranketpa.pointer_net import PointNet
+from models.ranketpa.pointer_net import PointNet
 from utils import ws, EarlyStop, get_dataset_path, AverageMeter, dir_check
 from evaluation1.eval import sort_eval
 

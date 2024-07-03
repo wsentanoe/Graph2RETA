@@ -310,8 +310,6 @@ def get_order_data_etpa(sort_mode, datatype):
         'pnn': 'PnnOutput',
     }[sort_data]
 
-    # file_path = ws + f'/data/{order_data}_{datatype}.pkl'
-
     #   ------------------------------ SRP Code --------------------------------------
 
     file_path = ws + f'/data1/route_result.pkl'
@@ -330,11 +328,8 @@ def get_order_data_etpa(sort_mode, datatype):
 
     train_sort_idx, test_sort_idx = tuple(tensor for tensor in graph.values())
 
-    # print("tensor", tensor.get_device(), type(tensor))
-
     # --------------------------- Masking ---------------------------------
     mask_value = torch.tensor(-1, dtype=torch.int32).to(device)
-    # print("mask_value", mask_value.get_device(), type(mask_value))
 
     # Iterate through the dictionary and apply the mask
     for key, tensor in graph.items():
@@ -408,9 +403,6 @@ class EtaMetric(object):
 
 # Loss Function
 def mask_loss(pred, label):
-    # print("Prediction is:\n", pred)
-    # print("Label is:\n", label)
-    # print("preeed", pred.get_device(), type(pred))
     loss_func = nn.HuberLoss().to(pred.device)
     mask = label > 0
     label = label.masked_select(mask).to(device)
@@ -418,9 +410,6 @@ def mask_loss(pred, label):
     loss = loss_func(pred, label)
     n = mask.sum().item()
 
-    # print("mask", mask.get_device(), type(mask))
-    # print("Prediction is:\n", pred)
-    # print("Label is:\n", label)
     return loss, n
 
 
@@ -471,12 +460,9 @@ class MyDataset(Dataset):
         sort_x_size = len(self.unpick_x[0][0])
         return input_size, sort_x_size
 
-    # from abc import abstractmethod
-    # @abstractmethod
     def get_input_size_etpa(self):  # redefine this function for different method
         # change 25- > 27
 
-        # return len(self.global_x[0]) + len(self.unpick_x[0][0]) + 27 + 1
         return len(self.unpick_x[0][0]) + 27 + 1
 
     def size_etpa(self):
@@ -654,7 +640,7 @@ import nni, math
 
 
 def get_model_function_etpa():
-    import ranketpa.RankPETA as RankPETA
+    import models.ranketpa.RankPETA as RankPETA
 
     # model_dict = {
     #     'RankPETA': (RankPETA.MyModel, RankPETA.save2file),
@@ -970,8 +956,7 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
     for epoch in range(params['num_epoch']):
         if early_stop_g2r.stop_flag and early_stop_etpa.stop_flag: break
         postfix = {"epoch": epoch, "loss": 0.0, "current_loss": 0.0}  # Combine Parameters , Epochs, loss, currentlos
-        # for alpha in alpha_search_values:
-        #     print(f"Training for alpha = {alpha}")
+
         # Initialize tensor for total pointers
         total_pred_pointers = torch.tensor([]).to(device)
         total_node_features = torch.tensor([]).to(device)
@@ -1090,37 +1075,6 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
 
             if params['is_test']: break
 
-            # # Define the file name of the output file (.pkl)
-            # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
-            #
-            # # Initialize the dictionary for the output
-            # output_dict = {}
-            #
-            # # Check if file exists
-            # if Path(output_fname).is_file():
-            #     output_dict = np.load(output_fname, allow_pickle=True)
-            #
-            # # Append the data to the dictionary
-            # output_dict[str(epoch)] = total_pred_pointers
-            #
-            # # Store the data to the file
-            # with open(output_fname, 'wb') as df_file:
-            #     pickle.dump(obj=output_dict, file=df_file)
-            #
-            # # Store node feature data into a file
-            # output_dict_node = {}
-            # output_dict_node['V_val'] = total_node_features
-            # output_fname_node = 'node_features_train_.npy'
-            # with open(output_fname_node, 'wb') as df_file:
-            #     pickle.dump(obj=output_dict_node, file=df_file)
-            #
-            # # Store node feature data into a file
-            # output_dict_index = {}
-            # output_dict_index['index'] = total_index
-            # output_fname_index = f'index_train_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
-            # with open(output_fname_index, 'wb') as df_file:
-            #     pickle.dump(obj=output_dict_index, file=df_file)
-
             # Validation process
             val_result_g2r, pred_etpa, val_lable_eta, val_loss_epoch = test_model(modelRoute, val_loader, device, params['pad_value'],
                                                                   params, save2FileRoute, 'val', modelArrivalTime,
@@ -1169,31 +1123,6 @@ def train_val_test_g2r(train_loader, val_loader, test_loader, modelRoute, device
         print('best model loaded !!!')
     except:
         print('load best model failed')
-
-    # # Define the file name of the output file (.pkl)
-    # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
-    #
-    # # Initialize the dictionary for the output
-    # temp_dict = {}
-    # output_dict = {}
-    #
-    # # Check if file exists
-    # if Path(output_fname).is_file():
-    #     temp_dict = np.load(output_fname, allow_pickle=True)
-    #
-    # output_dict['pred_pointers_train'] = temp_dict[str(early_stop_g2r.best_epoch)]
-    #
-    # # Store the data to the file
-    # with open(output_fname, 'wb') as df_file:
-    #     pickle.dump(obj=output_dict, file=df_file)
-    #
-    # # Store the loss
-    # loss_dict = {}
-    # loss_dict['train'] = train_loss_output
-    # loss_dict['val'] = val_loss_output
-    # output_fname_loss = f'loss_joint_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.npy'
-    # with open(output_fname_loss, 'wb') as df_file:
-    #     pickle.dump(obj=loss_dict, file=df_file)
 
     # Test process
     test_result, test_pred_etpa, test_lable_eta = test_model(modelRoute, test_loader, device, params['pad_value'],
@@ -1245,16 +1174,7 @@ def get_nonzeros(pred_steps, label_steps, label_len, pred_len, pad_value):
 
 
 def get_model_function_g2r():
-    import graph2route.graph2route_pd.model as graph2route_pd
-    #import graph2route.graph2route_logistics.model as graph2route_logistics
-
-    # model_dict = {
-    #
-    #     'graph2route_pd': (graph2route_pd.Graph2Route, graph2route_pd.save2file),
-    #     #'graph2route_logistics': (graph2route_logistics.Graph2Route, graph2route_logistics.save2file),
-    #
-    # }
-    # model, save2file = model_dict[model]
+    from models import graph2route as graph2route_pd
     return graph2route_pd.Graph2Route, graph2route_pd.save2file
 
 
@@ -1279,11 +1199,6 @@ def run(params, DATASET, PROCESS_BATCH, TEST_MODEL, collate_fn=None):
     test_dataset = DATASET(mode='test', params=params)
     test_loader = DataLoader(test_dataset, batch_size=params['batch_size'], shuffle=False, collate_fn=collate_fn,
                              drop_last=True)
-
-    # train, valid and test
-    # net_models = ['graph2route_pd']
-    # print("Model route is :",params['modelRoute'])
-    # print("Model ETPA is :",params['modelArrivalTime'])
 
     # Get the Graph2Route model and initialize it
     modelRoute, save2FileRoute = get_model_function_g2r()

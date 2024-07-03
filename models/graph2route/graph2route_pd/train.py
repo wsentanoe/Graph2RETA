@@ -8,7 +8,7 @@ from tqdm import tqdm
 from evaluation.eval_route import Metric
 from utils.utils import run, dict_merge
 from utils.utils import get_nonzeros
-from graph2route.graph2route_pd.model import Graph2RouteDataset
+from models.graph2route.graph2route_pd.model import Graph2RouteDataset
 import pickle
 from pathlib import Path
 
@@ -236,22 +236,22 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
         save2fileRoute(params_2)
 
        
-        output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
-        output_dict = {}
-
-        if Path(output_fname).is_file():
-            output_dict = np.load(output_fname, allow_pickle=True)
-
-        output_dict['pred_pointers_test'] = total_pred_pointers
-
-        with open(output_fname, 'wb') as df_file:
-            pickle.dump(obj=output_dict, file=df_file)
-
-        output_dict_node = {}
-        output_dict_node['V_val'] = total_node_features
-        output_fname_node = 'node_features_test.npy'
-        with open(output_fname_node, 'wb') as df_file:
-            pickle.dump(obj=output_dict_node, file=df_file)
+        # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
+        # output_dict = {}
+        #
+        # if Path(output_fname).is_file():
+        #     output_dict = np.load(output_fname, allow_pickle=True)
+        #
+        # output_dict['pred_pointers_test'] = total_pred_pointers
+        #
+        # with open(output_fname, 'wb') as df_file:
+        #     pickle.dump(obj=output_dict, file=df_file)
+        #
+        # output_dict_node = {}
+        # output_dict_node['V_val'] = total_node_features
+        # output_fname_node = 'node_features_test.npy'
+        # with open(output_fname_node, 'wb') as df_file:
+        #     pickle.dump(obj=output_dict_node, file=df_file)
 
         return evaluator_2, pred_etpa, label_eta
 
@@ -259,27 +259,3 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
 def main(params):
     run(params, Graph2RouteDataset, process_batch, test_model, collate_fn)
 
-
-# def get_params():
-#     from utils.utils import get_common_params
-#     parser = get_common_params()
-#     args, _ = parser.parse_known_args()
-#     return args
-
-
-# if __name__ == "__main__":
-#
-#     import time, nni
-#     import logging
-#
-#     logger = logging.getLogger('training')
-#     try:
-#         tuner_params = nni.get_next_parameter()
-#         logger.debug(tuner_params)
-#         params = vars(get_params())
-#         params.update(tuner_params)
-#
-#         main(params)
-#     except Exception as exception:
-#         logger.exception(exception)
-#         raise

@@ -6,7 +6,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data import Dataset
 from tqdm import tqdm
 from my_utils1.utils import ws, get_dataset_path, batch_file_name
-from ranketpa.pointer_net import PointNet
+from models.ranketpa.pointer_net import PointNet
 import warnings
 warnings.filterwarnings("ignore")
 
