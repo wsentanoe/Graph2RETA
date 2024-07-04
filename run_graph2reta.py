@@ -17,6 +17,6 @@ if __name__ == '__main__':
     params = vars(get_params())
 
     # Import the Graph2Route model and run it using the parameters
-    from models import graph2route as graph2route_pd
+    import models.graph2route.graph2route_pd.train as graph2route_pd
 
     graph2route_pd.main(params)

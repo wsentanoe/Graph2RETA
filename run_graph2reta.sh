@@ -11,4 +11,4 @@ set -e # Good Idea to stop operation on first error.
 
 cd ~/Graph2RETA          # navigate to the directory if necessary
 source activate env_graph2route
-srun python run_joint.py  --seed=2022 --spatial_encoder='gcn' --temporal_encoder='tft' --num_epoch=5       # python jobs require the srun command to work
+srun python run_graph2reta.py  --seed=2022 --spatial_encoder='gcn' --temporal_encoder='tft' --num_epoch=5       # python jobs require the srun command to work
