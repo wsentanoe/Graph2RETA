@@ -1174,7 +1174,7 @@ def get_nonzeros(pred_steps, label_steps, label_len, pred_len, pad_value):
 
 
 def get_model_function_g2r():
-    from models import graph2route as graph2route_pd
+    import models.graph2route.graph2route_pd.model as graph2route_pd
     return graph2route_pd.Graph2Route, graph2route_pd.save2file
 
 
