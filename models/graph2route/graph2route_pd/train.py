@@ -235,24 +235,6 @@ def test_model(modelRoute, test_dataloader, device, pad_value, params, save2file
         params_2['eval_max'] = params['eval_end_2']
         save2fileRoute(params_2)
 
-       
-        # output_fname = f'route_result_{params["spatial_encoder"]}_{params["temporal_encoder"]}_{params["seed"]}.pkl'
-        # output_dict = {}
-        #
-        # if Path(output_fname).is_file():
-        #     output_dict = np.load(output_fname, allow_pickle=True)
-        #
-        # output_dict['pred_pointers_test'] = total_pred_pointers
-        #
-        # with open(output_fname, 'wb') as df_file:
-        #     pickle.dump(obj=output_dict, file=df_file)
-        #
-        # output_dict_node = {}
-        # output_dict_node['V_val'] = total_node_features
-        # output_fname_node = 'node_features_test.npy'
-        # with open(output_fname_node, 'wb') as df_file:
-        #     pickle.dump(obj=output_dict_node, file=df_file)
-
         return evaluator_2, pred_etpa, label_eta
 
 
