@@ -18,16 +18,19 @@ Use the following command to run the code: python run_graph2reta.py
 
 ## Repo Structure
 The structure of our code and description of important files are given as follows:
-│ ├────algorithm/
-│ │ ├────graph2route_logistics/: code of graph2route for pick-up route prediction in logistics
-│ │ └────graph2route_food/: code of graph2route for food delivery route prediction
-├────data/dataset/
-│ ├────logistics_p/: Logistics-P data.
-│ └────food_pd/: Food_PD data.
-├────my_utils/
-│ ├────eval.py: Implemention of the evaluation metrics.
-│ └────utils.py
-└────run.py: Main function of this project, mainly used for training and evaluating different models.
+
+- **data/dataset/**:
+  - **food_pd/**: Food_PD data
+- **evaluation/**:
+  - **eval_route.py**: Implementation of the evaluation metrics for graph2route
+  - **eval_etpa.py**: Implementation of the evaluation metrics for ranketpa
+- **models/**:
+  - **graph2route/**: Code of graph2route for pick-up route prediction 
+  - **ranketpa/**: Code of ranketpa for arrival time estimation
+- **utils/**:
+  - **utils.py**
+- **run_graph2reta.py**: Main function of this project, mainly used for training and evaluating different models
+
 
 ## Acknowledgement
 We would like to extend our gratitude to the authors of the following papers, whose groundbreaking work has greatly inspired and informed our project:
