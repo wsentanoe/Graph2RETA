@@ -6,7 +6,7 @@ import torch
 import math
 
 """
-    Evaluation Functions Seperatley for evulating performance of ETPA and Graph2Route
+    Evaluation Functions used in route_predictor_train.py
 
 """
 def eta_eval(pred, label, metric='mae'):
