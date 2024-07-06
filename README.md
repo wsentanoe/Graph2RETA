@@ -16,7 +16,20 @@ This is the picture of our implemented model.\
 ## Usage
 Use the following command to run the code: python run_graph2reta.py
 
-## Authors and acknowledgment
+## Repo Structure
+The structure of our code and description of important files are given as follows:
+│ ├────algorithm/
+│ │ ├────graph2route_logistics/: code of graph2route for pick-up route prediction in logistics
+│ │ └────graph2route_food/: code of graph2route for food delivery route prediction
+├────data/dataset/
+│ ├────logistics_p/: Logistics-P data.
+│ └────food_pd/: Food_PD data.
+├────my_utils/
+│ ├────eval.py: Implemention of the evaluation metrics.
+│ └────utils.py
+└────run.py: Main function of this project, mainly used for training and evaluating different models.
+
+## Acknowledgement
+We would like to extend our gratitude to the authors of the following papers, whose groundbreaking work has greatly inspired and informed our project:
 1. Wen, H., Lin, Y., Mao, X., Wu, F., Zhao, Y., Wang, H., Zheng, J., Wu, L., Hu,H., Wan, H.: Graph2route: A dynamic spatial-temporal graph neural network for pick-up and delivery route prediction. In: Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining. pp. 4143–4152 (2022) (https://github.com/wenhaomin/graph2route)
-2. Wen, H., Lin, Y., Wu, F., Wan, H., Sun, Z., Cai, T., Liu, H., Guo, S., Zheng, J., Song, C., et al.: Enough waiting for the couriers: Learning to estimate package pick-up arrival time from couriers’ spatial-temporal behaviors. ACM Transactions
- on Intelligent Systems and Technology 14(3), 1–22 (2023)
+2. Wen, H., Lin, Y., Wu, F., Wan, H., Sun, Z., Cai, T., Liu, H., Guo, S., Zheng, J., Song, C., et al.: Enough waiting for the couriers: Learning to estimate package pick-up arrival time from couriers’ spatial-temporal behaviors. ACM Transactions on Intelligent Systems and Technology 14(3), 1–22 (2023)
