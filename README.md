@@ -14,7 +14,7 @@ This is the picture of our implemented model.\
 1. Install everything from requirements.txt
 
 ## Usage
-Use the following command to run the code: python run_joint.py
+Use the following command to run the code: python run_graph2reta.py
 
 ## Authors and acknowledgment
 1. Wen, H., Lin, Y., Mao, X., Wu, F., Zhao, Y., Wang, H., Zheng, J., Wu, L., Hu,H., Wan, H.: Graph2route: A dynamic spatial-temporal graph neural network for pick-up and delivery route prediction. In: Proceedings of the 28th ACM SIGKDD Conference on Knowledge Discovery and Data Mining. pp. 4143–4152 (2022) (https://github.com/wenhaomin/graph2route)
