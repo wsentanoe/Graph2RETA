@@ -6,11 +6,8 @@ import torch
 import math
 
 """
-_KI_
-Need to figure our which file we are using for evulation of epta 
-eval.py or eval.etpa
+Evaluation Functions of ranketpa
 
-Evaluation Function
 """
 
 
