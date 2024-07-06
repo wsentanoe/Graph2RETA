@@ -1,18 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 from pprint import pprint
-
-# if platform.system() == 'Linux':
-#     file = '/data/MengQingqiang/eta/peta_6_25/'
-#     sys.path.append(file)
-#     sys.path.extend([os.path.join(root, name) for root, dirs, _ in os.walk(file) for name in dirs])
-#
-# from torch.multiprocessing import set_start_method
-# try:
-#     set_start_method('spawn')
-# except RuntimeError:
-#     pass
-
 import argparse
 import logging
 import nni
@@ -33,7 +21,11 @@ warnings.filterwarnings("ignore")
 
 from models.ranketpa.pointer_net import PointNet
 from utils import ws, EarlyStop, get_dataset_path, AverageMeter, dir_check
-from evaluation1.eval import sort_eval
+from evaluation.eval import sort_eval
+
+"""
+Original route predictor of the ranketpa model (not used)
+"""
 
 
 class my_Dataset(Dataset):
