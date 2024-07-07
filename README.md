@@ -2,19 +2,26 @@
 
 ## Description
 
+This is the repository for the corresponding paper "Graph2RETA: Graph Neural Networks for Pick-up and Delivery Route Prediction and Arrival Time Estimation"
+
 This research aims to improve delivery services by tackling two main problems: inaccurate delivery routes and tricky ETA(Estimated Time of Arrival) predictions. Traditional methods often ignore real-world factors, causing planned routes to differ from actual ones. Our new method, Graph2RETA, uses a smart graph-based model to predict both delivery routes and arrival times more accurately. It considers how delivery workers move over time and space, leading to better predictions and fewer delivery issues.
 
 
 ## Visuals
-This is the picture of our implemented model.\
+This is the visualization of our Graph2RETA model.\
 ![Model Image](model.png)
 
 
 ## Installation
-1. Install everything from requirements.txt
+- Download the [full dataset](https://drive.google.com/drive/folders/1iqSYBnUKdeJLC_ttHF8lZrhxmLcc7OIv?usp=sharing), and place the files (train, val, and test) inside the `data/dataset/food_pd/` directory.
+- Install the required packages from `requirements.txt`
 
 ## Usage
-Use the following command to run the code: python run_graph2reta.py
+Use the following command to run the Graph2RETA
+
+```commandline
+python run_graph2reta.py --spatial_encoder='gcn' --temporal_encoder='tft'
+```
 
 ## Repo Structure
 The structure of our code and description of important files are given as follows:

@@ -862,19 +862,19 @@ def get_common_params():
 
     ## common settings for deep models
     parser.add_argument('--batch_size', type=int, default=64, help='input batch size for training (default: 64)')
-    parser.add_argument('--num_epoch', type=int, default=1000, help='number of epochs to train (default: 60)')
-    parser.add_argument('--lr', type=float, default=0.001, metavar='LR', help='learning rate (default: 1e-4)')
-    parser.add_argument('--seed', type=int, default=1999, metavar='S', help='random seed (default: 6)')
+    parser.add_argument('--num_epoch', type=int, default=1000, help='number of epochs to train (default: 1000)')
+    parser.add_argument('--lr', type=float, default=0.001, metavar='LR', help='learning rate (default: 1e-3)')
+    parser.add_argument('--seed', type=int, default=1999, metavar='S', help='random seed (default: 2022)')
     parser.add_argument('--wd', type=float, default=1e-5, help='weight decay (default: 1e-5)')
     parser.add_argument('--early_stop', type=int, default=10, help='early stop at')
-    parser.add_argument('--workers', type=int, default=2, help='number of data loading workers (default: 4)')
+    parser.add_argument('--workers', type=int, default=2, help='number of data loading workers (default: 2)')
     parser.add_argument('--is_eval', type=str, default=False, help='True means load existing model')
 
     parser.add_argument('--num_worker_pd', type=int, default=920, help='number of workers in food delivery dataset')
     parser.add_argument('--num_worker_logistics', type=int, default=2346, help='number of workers in logistics dataset')
 
     parser.add_argument('--spatial_encoder', type=str, default='gcn', help='type of spatial encoder')
-    parser.add_argument('--temporal_encoder', type=str, default='gru', help='type of temporal encoder')
+    parser.add_argument('--temporal_encoder', type=str, default='tft', help='type of temporal encoder')
 
     # common settings for graph2route model
     parser.add_argument('--node_fea_dim', type=int, default=8, help='dimension of node input feature')
@@ -895,10 +895,10 @@ def get_common_params():
     parser.add_argument('--num_block', type=int, default=2, metavar='N', help='')
     parser.add_argument('--num_head', type=int, default=2, metavar='N', help='')
 
-    parser.add_argument('--modelRoute', type=str, default="graph2route_pd", metavar='N', help='')
-    parser.add_argument('--modelArrivalTime', type=str, default="RankPETA", metavar='N', help='')
-    parser.add_argument('--alpha_loss', type=float, default=0.5, metavar='N', help='')
-    parser.add_argument('--scheduled_alpha', type=bool, default=True, metavar='N', help='')
+    parser.add_argument('--modelRoute', type=str, default="graph2route_pd", metavar='N', help='model for the route prediction')
+    parser.add_argument('--modelArrivalTime', type=str, default="RankPETA", metavar='N', help='model for the arrival time estimation')
+    parser.add_argument('--alpha_loss', type=float, default=0.5, metavar='N', help='alpha for the joint training loss, ingored when scheduled_alpha is True')
+    parser.add_argument('--scheduled_alpha', type=bool, default=True, metavar='N', help='option to enable/disable scheduled alpha')
     return parser
 
 
